@@ -1,4 +1,4 @@
-// Version 1.1.7
+// Version 1.1.8
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
@@ -40,7 +40,7 @@ curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop
 cls
 echo Installed Desktop Plugin
 pause
-goto exit
+goto close
 
 :uninstall
 cls
@@ -60,12 +60,12 @@ del /q /f desktop.bat
 cls
 echo Uninstalled Desktop Plugin
 pause
-goto exit
+goto close
 
 :support
 cls
 start https://github.com/thekevie/school-programs
-exit
+goto exit
 
 :hide
 cls
@@ -83,7 +83,7 @@ echo Installation File Is Now Visible
 pause
 goto menu
 
-:exit
+:close
 cls
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
@@ -91,4 +91,7 @@ cd %directory%
 copy /y "%temp%\install.bat" "install.bat"
 del /q /f %temp%\install.bat
 start install.bat
+goto exit
+
+:exit
 exit
