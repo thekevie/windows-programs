@@ -1,9 +1,11 @@
 @echo off
 title Desktop - Source Code: github.com/thekevie/school-programs
-cd /d %userprofile%\Desktop
-forfiles -p "%userprofile%\Desktop" -s -m *.url* /D -5 /C "cmd /c del @path"
-cd /d %public%/Desktop
-forfiles -p "%userprofile%\Desktop" -s -m *.url* /D -5 /C "cmd /c del @path"
+cmd /c del %userprofile%\Desktop\www.studi.se.url
+cmd /c del %userprofile%\Desktop\Landguiden.url
+cmd /c del %public%/Desktop\www.studi.se.url
+cmd /c del %public%/Desktop\Landguiden.url
+
+pause 
 
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
