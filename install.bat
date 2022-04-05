@@ -59,7 +59,6 @@ goto exit
 :support
 cls
 start https://github.com/thekevie/school-programs
-pause
 goto exit
 
 :hide
