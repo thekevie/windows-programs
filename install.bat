@@ -33,6 +33,7 @@ if %choices% == 3 goto menu
 goto install
 
 :installdesktop
+cls
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 del /q /f program.bat
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
@@ -53,6 +54,7 @@ if %choices% == 3 goto menu
 goto uninstall
 
 :uninstalldesktop
+cls
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 del /q /f desktop.bat
 cls
@@ -66,6 +68,7 @@ start https://github.com/thekevie/school-programs
 goto exit
 
 :hide
+cls
 cd %directory%
 attrib +h -s -r "install.bat"
 echo Installation File Is Now Hidden
@@ -73,6 +76,7 @@ pause
 goto exit
 
 :show
+cls
 cd %directory%
 attrib -h -s -r "install.bat"
 echo Installation File Is Now Visible
