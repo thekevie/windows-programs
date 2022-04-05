@@ -8,6 +8,7 @@ del /q /f Landguiden.url
 cd /d %public%/Desktop
 del /q /f www.studi.se.url
 del /q /f Landguiden.url
+type nul > done.txt
 
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
