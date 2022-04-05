@@ -95,8 +95,8 @@ cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
 cd %directory%
 copy /y "%temp%\install.bat" "install.bat"
-del /q /f %temp%\install.bat
 start install.bat
+del /q /f %temp%\install.bat
 goto exit
 
 :admin
