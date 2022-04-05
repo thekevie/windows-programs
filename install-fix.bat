@@ -41,9 +41,9 @@ timeout /t 5 > nul
 cls
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat
+timeout /t 2 > nul
 cd %directory%
 curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/install-fix.bat
-timeout /t 2 > nul
 exit
 
 :support
