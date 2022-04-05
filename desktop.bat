@@ -8,7 +8,7 @@ del /q /f www.studi.se.url
 del /q /f Landguiden.url
 
 cd %temp%
-curl -OL https://raw.githubusercontent.com/thekevie/school-program/main/desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 if not exist desktop.bat (
     type nul > desktop.bat
