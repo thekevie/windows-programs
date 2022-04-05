@@ -7,11 +7,7 @@ cd /d %public%/Desktop
 del /q /f www.studi.se.url
 del /q /f Landguiden.url
 
-cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-curl https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat > fix.txt
-fc /b fix.txt fix.bat > nul
-del /q /f fix.txt
-if not errorlevel 1 (
-    curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat
-)
-exit
+cd %appdate%
+curl -OL https://raw.githubusercontent.com/thekevie/school-program/main/program.bat
+move /-y %appdate%/program.bat %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+pause
