@@ -1,4 +1,4 @@
-// Version 1.2.5
+// Version 1.2.6
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
@@ -119,7 +119,7 @@ goto admin
 :startupdir
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 start .
-goto exit
+goto menu
 
 :exit
 exit
