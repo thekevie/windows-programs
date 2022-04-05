@@ -1,4 +1,4 @@
-// Version 1.1.5
+// Version 1.1.6
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
@@ -73,7 +73,7 @@ cd %directory%
 attrib +h -s -r "install.bat"
 echo Installation File Is Now Hidden
 pause
-exit
+goto menu
 
 :show
 cls
@@ -81,7 +81,7 @@ cd %directory%
 attrib -h -s -r "install.bat"
 echo Installation File Is Now Visible
 pause
-exit
+goto menu
 
 :exit
 cls
