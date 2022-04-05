@@ -4,12 +4,8 @@ cd /d %userprofile%\Desktop
 del www.studi.se.url
 del Landguiden.url
 cd /d %public%/Desktop
-del /q /f www.studi.se.url
-del /q /f Landguiden.url
-type nul > done.txt
-
-del test.txt
-pause
+del www.studi.se.url
+del Landguiden.url
 
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
