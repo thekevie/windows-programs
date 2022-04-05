@@ -1,4 +1,4 @@
-// Version 1.2.1
+// Version 1.2.2
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
@@ -19,6 +19,7 @@ if %choices% == 3 goto support
 if %choices% == 4 goto hide
 if %choices% == 5 goto show
 if %choices% == 6 exit
+if %choices% == admin goto admin
 goto menu
 
 :install
@@ -76,6 +77,14 @@ echo Installation File Is Now Hidden
 pause
 goto menu
 
+:superhide
+cls
+cd %directory%
+attrib +h +s -r "install.bat"
+echo Installation File Is Now Super-Hidden
+pause
+goto admin
+
 :show
 cls
 cd %directory%
@@ -83,6 +92,17 @@ attrib -h -s -r "install.bat"
 echo Installation File Is Now Visible
 pause
 goto menu
+
+:admin
+cls
+echo 1. Update
+echo 2. Super Hide
+echo 3. Go Back
+set /p choices=Type the number: 
+if %choices% == 1 goto close
+if %choices% == 2 goto superhide
+if %choices% == 3 goto menu
+goto admin
 
 :close
 cls
