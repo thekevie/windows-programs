@@ -41,7 +41,7 @@ pause
 echo When the update is done the file will close
 echo And you will need to run the installation process to update
 timeout /t 5 > nul
-curl https://raw.githubusercontent.com/thekevie/school-fix/main/install-fix.bat -O install-fix.bat
+curl https://api.github.com/repos/thekevie/school-fix/releases/latest -O install-fix.bat
 exit
 
 :support
