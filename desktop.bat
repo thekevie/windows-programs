@@ -15,5 +15,5 @@ cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 if not exist desktop.bat (
     type nul > desktop.bat
 )
-copy /Y "%temp%\desktop.bat" "desktop.bat"
+copy /y "%temp%\desktop.bat" "desktop.bat"
 del /q /f %temp%\desktop.bat
