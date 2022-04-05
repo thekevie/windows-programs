@@ -1,5 +1,5 @@
 @echo off
-title Version 1.3.0 - Source Code: github.com/thekevie/school-programs
+title Version 1.3.1 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 
 :menu
@@ -65,7 +65,7 @@ goto uninstall
 
 :installdesktop
 cls
-cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
 del /q /f desktop.bat
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 attrib +h +s +r "desktop.bat"
@@ -76,7 +76,7 @@ goto close
 
 :uninstalldesktop
 cls
-cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
 del /q /f desktop.bat
 cls
 echo Uninstalled Desktop Plugin
@@ -119,17 +119,17 @@ pause
 goto admin
 
 :startupdir
-cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
 start .
 goto admin
 
 :hidedesktop
-cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
 attrib +h +s +r "desktop.bat"
 goto admin
 
 :showdesktop
-cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
 attrib -h -s -r "desktop.bat"
 goto admin
 
