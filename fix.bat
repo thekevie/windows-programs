@@ -15,5 +15,4 @@ if not errorlevel 1 (
     del /q /f fix.bat
     curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat
 )
-pause 
 exit
