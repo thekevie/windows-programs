@@ -1,6 +1,5 @@
-// Version 1.2.9
 @echo off
-title Install Programs - Source Code: github.com/thekevie/school-programs
+title Version 1.3.0 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 
 :menu
