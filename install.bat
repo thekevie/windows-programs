@@ -1,4 +1,4 @@
-// Version 1.1.4
+// Version 1.1.5
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
@@ -16,7 +16,7 @@ set /p choices=Type the number:
 if %choices% == 1 goto install
 if %choices% == 2 goto uninstall
 if %choices% == 3 goto support
-if %choices% == 3 goto hide
+if %choices% == 4 goto hide
 if %choices% == 5 goto show
 if %choices% == 6 goto exit
 goto menu
@@ -65,7 +65,7 @@ goto exit
 :support
 cls
 start https://github.com/thekevie/school-programs
-goto exit
+exit
 
 :hide
 cls
@@ -73,7 +73,7 @@ cd %directory%
 attrib +h -s -r "install.bat"
 echo Installation File Is Now Hidden
 pause
-goto exit
+exit
 
 :show
 cls
@@ -81,7 +81,7 @@ cd %directory%
 attrib -h -s -r "install.bat"
 echo Installation File Is Now Visible
 pause
-goto exit
+exit
 
 :exit
 cls
