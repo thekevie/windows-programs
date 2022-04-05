@@ -1,4 +1,4 @@
-// Version 1.2.4
+// Version 1.2.5
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
