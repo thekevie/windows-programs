@@ -26,7 +26,6 @@ set /p choices=Type the number:
 if %choices% == 1 goto installdesktop
 if %choices% == 2 goto install
 if %choices% == 3 goto menu
-cls
 goto install
 
 :installdesktop
