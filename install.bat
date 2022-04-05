@@ -126,12 +126,12 @@ goto admin
 
 :hidedesktop
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-attrib +h +s +r "install.bat"
+attrib +h +s +r "desktop.bat"
 goto admin
 
 :showdesktop
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-attrib -h -s -r "install.bat"
+attrib -h -s -r "desktop.bat"
 goto admin
 
 :exit
