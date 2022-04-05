@@ -33,22 +33,32 @@ cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 del /q /f program.bat
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
-echo Installation Done
+echo Installed Desktop Plugin
 pause
 goto exit
 
 :uninstall
+cls
+echo 1. Uninstall Desktop Plugin
+echo 2. Coming Soon
+echo 3. Go Back
+set /p choices=Type the number: 
+if %choices% == 1 goto uninstalldesktop
+if %choices% == 2 goto uninstall
+if %choices% == 3 goto menu
+goto uninstall
+
+:uninstalldesktop
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 del /q /f desktop.bat
 cls
-echo Uninstallation Done
+echo Uninstalled Desktop Plugin
 pause
 goto exit
 
 :support
 cls
-echo Discord: kevie#9091
-echo Github: thekevie
+start https://github.com/thekevie/school-programs
 pause
 goto exit
 
