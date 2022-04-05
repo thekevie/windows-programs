@@ -90,7 +90,6 @@ goto close
 
 :close
 cls
-goto exit
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
 cd %directory%
