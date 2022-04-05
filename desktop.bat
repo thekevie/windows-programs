@@ -1,3 +1,5 @@
+// Version 1.1.0
+// Source Code: github.com/thekevie/school-programs
 @echo off
 title Desktop
 cd /d %userprofile%\Desktop
