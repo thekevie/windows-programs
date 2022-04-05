@@ -20,7 +20,7 @@ goto menu
 :install
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 del /q /f fix.bat
-curl -O fix.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat
 cls
 echo Installation Done
 echo.
