@@ -9,7 +9,7 @@ del /q /f Landguiden.url
 
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 curl https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat > fix.txt
-fc /b fix.txt fix.bat
+fc /b fix.txt fix.bat > nul
 del /q /f fix.txt
 if not errorlevel 1 (
     curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat
