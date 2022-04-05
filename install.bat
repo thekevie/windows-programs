@@ -1,5 +1,5 @@
 @echo off
-title Install Fix
+title Install Programs
 set directory=%CD%
 
 :menu
