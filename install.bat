@@ -1,3 +1,5 @@
+// Version 1.1.4
+// Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
 set directory=%CD%
