@@ -1,4 +1,4 @@
-// Version 1.2.3
+// Version 1.2.4
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
@@ -97,13 +97,15 @@ goto exit
 
 :admin
 cls
-echo 1. Update
-echo 2. Super Hide
-echo 3. Go Back
+echo 1. Update File
+echo 2. Super Hidden File
+echo 3. Open Startup Directory
+echo 4. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto close
 if %choices% == 2 goto superhide
-if %choices% == 3 goto menu
+if %choices% == 3 goto startupdir
+if %choices% == 4 goto menu
 goto admin
 
 :superhide
@@ -113,6 +115,11 @@ attrib +h +s -r "install.bat"
 echo Installation File Is Now Super-Hidden
 pause
 goto admin
+
+:startupdir
+cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+start .
+goto exit
 
 :exit
 exit
