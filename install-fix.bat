@@ -40,6 +40,7 @@ echo When the update is done the file will close
 timeout /t 5 > nul
 cls
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+del /q /f fix.bat
 curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat
 cd %directory%
 curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/install-fix.bat
