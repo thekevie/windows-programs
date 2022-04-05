@@ -1,4 +1,4 @@
-// Version 1.1.6
+// Version 1.1.7
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
@@ -18,7 +18,7 @@ if %choices% == 2 goto uninstall
 if %choices% == 3 goto support
 if %choices% == 4 goto hide
 if %choices% == 5 goto show
-if %choices% == 6 goto exit
+if %choices% == 6 exit
 goto menu
 
 :install
