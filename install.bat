@@ -68,9 +68,7 @@ goto uninstall
 cls
 cd %startup%
 attrib -h -s -r "desktop.bat"
-if exist desktop.bat (
-    del desktop.bat
-)
+del desktop.bat
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 attrib +h +s +r "desktop.bat"
 cls
