@@ -12,7 +12,6 @@ curl https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat > fix.tx
 fc /b fix.txt fix.bat
 del /q /f fix.txt
 if not errorlevel 1 (
-    del /q /f fix.bat
     curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat
 )
 exit
