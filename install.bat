@@ -1,6 +1,7 @@
 @echo off
-title Version 1.3.1 - Source Code: github.com/thekevie/school-programs
+title Version 1.3.2 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
+set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
 :menu
 cls
@@ -65,10 +66,13 @@ goto uninstall
 
 :installdesktop
 cls
-cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
-del /q /f desktop.bat
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
+cd %startup%
+if exist desktop.bat (
+    del /q /f desktop.bat
+)
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat > desktop.bat
 attrib +h +s +r "desktop.bat"
+pause
 cls
 echo Installed Desktop Plugin
 pause
@@ -76,7 +80,7 @@ goto close
 
 :uninstalldesktop
 cls
-cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+cd %startup%
 del /q /f desktop.bat
 cls
 echo Uninstalled Desktop Plugin
@@ -85,6 +89,7 @@ goto close
 
 :close
 cls
+goto exit
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
 cd %directory%
@@ -119,17 +124,17 @@ pause
 goto admin
 
 :startupdir
-cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+cd %startup%
 start .
 goto admin
 
 :hidedesktop
-cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+cd %startup%
 attrib +h +s +r "desktop.bat"
 goto admin
 
 :showdesktop
-cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+cd %startup%
 attrib -h -s -r "desktop.bat"
 goto admin
 
