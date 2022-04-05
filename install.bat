@@ -3,6 +3,7 @@ title Install Programs
 set directory=%CD%
 
 :menu
+cls
 echo 1. Install
 echo 2. Uninstall
 echo 3. Support
@@ -14,7 +15,6 @@ if %choices% == 2 goto uninstall
 if %choices% == 3 goto support
 if %choices% == 3 goto hide
 if %choices% == 5 goto exit
-cls
 goto menu
 
 :install
