@@ -10,13 +10,15 @@ echo 1. Install
 echo 2. Uninstall
 echo 3. Support
 echo 4. Hide
-echo 5. Exit
+echo 5. Show
+echo 6. Exit
 set /p choices=Type the number: 
 if %choices% == 1 goto install
 if %choices% == 2 goto uninstall
 if %choices% == 3 goto support
 if %choices% == 3 goto hide
-if %choices% == 5 goto exit
+if %choices% == 5 goto show
+if %choices% == 6 goto exit
 goto menu
 
 :install
