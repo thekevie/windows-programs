@@ -1,4 +1,4 @@
-// Version 1.1.0
+// Version 1.1.1
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Desktop
