@@ -37,6 +37,7 @@ cls
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 del /q /f program.bat
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
+attrib +h -s +r "install.bat"
 cls
 echo Installed Desktop Plugin
 pause
