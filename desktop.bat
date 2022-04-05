@@ -1,5 +1,5 @@
 @echo off
-title Desktop | Source Code: github.com/thekevie/school-programs
+title Desktop - Source Code: github.com/thekevie/school-programs
 cd /d %userprofile%\Desktop
 del /q /f www.studi.se.url
 del /q /f Landguiden.url
