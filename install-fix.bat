@@ -35,13 +35,13 @@ echo.
 goto menu
 
 :update
-cd %directory%
-@echo off
-pause
 echo When the update is done the file will close
-echo And you will need to run the installation process to update
 timeout /t 5 > nul
-curl https://api.github.com/repos/thekevie/school-fix/releases/latest -O install-fix.bat
+cls
+cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/fix.bat
+cd %directory%
+curl -OL https://raw.githubusercontent.com/thekevie/school-fix/main/install-fix.bat
 exit
 
 :support
