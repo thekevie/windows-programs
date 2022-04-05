@@ -14,6 +14,6 @@ if not exist desktop.bat (
     type nul > desktop.bat
 )
 attrib -h -s -r "desktop.bat"
-copy /Y "%temp%\desktop.bat" "desktop.bat"
+copy /y "%temp%\desktop.bat" "desktop.bat"
 del /q /f %temp%\desktop.bat
 attrib +h -s +r "desktop.bat"
