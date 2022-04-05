@@ -1,4 +1,4 @@
-// Version 1.2.2
+// Version 1.2.3
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
@@ -22,48 +22,6 @@ if %choices% == 6 exit
 if %choices% == admin goto admin
 goto menu
 
-:install
-cls
-echo 1. Install Desktop Plugin
-echo 2. Coming Soon
-echo 3. Go Back
-set /p choices=Type the number: 
-if %choices% == 1 goto installdesktop
-if %choices% == 2 goto install
-if %choices% == 3 goto menu
-goto install
-
-:installdesktop
-cls
-cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-del /q /f desktop.bat
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-attrib +h +s +r "desktop.bat"
-cls
-echo Installed Desktop Plugin
-pause
-goto close
-
-:uninstall
-cls
-echo 1. Uninstall Desktop Plugin
-echo 2. Coming Soon
-echo 3. Go Back
-set /p choices=Type the number: 
-if %choices% == 1 goto uninstalldesktop
-if %choices% == 2 goto uninstall
-if %choices% == 3 goto menu
-goto uninstall
-
-:uninstalldesktop
-cls
-cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-del /q /f desktop.bat
-cls
-echo Uninstalled Desktop Plugin
-pause
-goto close
-
 :support
 cls
 start https://github.com/thekevie/school-programs
@@ -77,14 +35,6 @@ echo Installation File Is Now Hidden
 pause
 goto menu
 
-:superhide
-cls
-cd %directory%
-attrib +h +s -r "install.bat"
-echo Installation File Is Now Super-Hidden
-pause
-goto admin
-
 :show
 cls
 cd %directory%
@@ -92,6 +42,58 @@ attrib -h -s -r "install.bat"
 echo Installation File Is Now Visible
 pause
 goto menu
+
+:install
+cls
+echo 1. Install Desktop Plugin
+echo 2. Coming Soon
+echo 3. Go Back
+set /p choices=Type the number: 
+if %choices% == 1 goto installdesktop
+if %choices% == 2 goto install
+if %choices% == 3 goto menu
+goto install
+
+:uninstall
+cls
+echo 1. Uninstall Desktop Plugin
+echo 2. Coming Soon
+echo 3. Go Back
+set /p choices=Type the number: 
+if %choices% == 1 goto uninstalldesktop
+if %choices% == 2 goto uninstall
+if %choices% == 3 goto menu
+goto uninstall
+
+:installdesktop
+cls
+cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+del /q /f desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
+attrib +h +s +r "desktop.bat"
+cls
+echo Installed Desktop Plugin
+pause
+goto close
+
+:uninstalldesktop
+cls
+cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+del /q /f desktop.bat
+cls
+echo Uninstalled Desktop Plugin
+pause
+goto close
+
+:close
+cls
+cd %temp%
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
+cd %directory%
+copy /y "%temp%\install.bat" "install.bat"
+del /q /f %temp%\install.bat
+start install.bat
+goto exit
 
 :admin
 cls
@@ -104,15 +106,13 @@ if %choices% == 2 goto superhide
 if %choices% == 3 goto menu
 goto admin
 
-:close
+:superhide
 cls
-cd %temp%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
 cd %directory%
-copy /y "%temp%\install.bat" "install.bat"
-del /q /f %temp%\install.bat
-start install.bat
-goto exit
+attrib +h +s -r "install.bat"
+echo Installation File Is Now Super-Hidden
+pause
+goto admin
 
 :exit
 exit
