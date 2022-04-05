@@ -1,4 +1,4 @@
-// Version 1.1.9
+// Version 1.2.0
 // Source Code: github.com/thekevie/school-programs
 @echo off
 title Install Programs
@@ -35,9 +35,9 @@ goto install
 :installdesktop
 cls
 cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-del /q /f program.bat
+del /q /f desktop.bat
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-attrib +h -s +r "install.bat"
+attrib +h -s +r "desktop.bat"
 cls
 echo Installed Desktop Plugin
 pause
