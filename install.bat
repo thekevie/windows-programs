@@ -1,5 +1,5 @@
 @echo off
-title Version 1.3.3 - Source Code: github.com/thekevie/school-programs
+title Version 1.3.4 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -69,7 +69,7 @@ cls
 cd %startup%
 attrib -h -s -r "desktop.bat"
 if exist desktop.bat (
-    del /q /f desktop.bat
+    del desktop.bat
 )
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat > desktop.bat
 attrib +h +s +r "desktop.bat"
@@ -83,7 +83,7 @@ goto close
 cls
 cd %startup%
 attrib -h -s -r "desktop.bat"
-del /q /f desktop.bat
+del desktop.bat
 cls
 echo Uninstalled Desktop Plugin
 pause
