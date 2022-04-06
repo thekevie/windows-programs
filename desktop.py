@@ -16,7 +16,7 @@ for dir in dirs:
 os.system("cls")
 
 r = requests.get("https://github.com/thekevie/school-programs/blob/main/desktop.py")
-with open(path, "a") as f:
+with open(path, "rawx") as f:
     read = f.read()
     write = f.write()
 	
