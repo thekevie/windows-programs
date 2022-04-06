@@ -1,5 +1,5 @@
 import os
-import request
+import requests
 
 path = os.path.abspath(__file__)
 
