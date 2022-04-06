@@ -3,7 +3,9 @@ import request
 
 path = os.path.abspath(__file__)
 
-dirs = ["%userprofile%/Desktop/", "%public%/Desktop/"]
+user = os.path.expandvars(r'%userprofile%\Desktop')
+public = os.path.expandvars(r'%public%\Desktop')
+dirs = [user, public]
 
 for dir in dirs:
     files = os.listdir(dir)
@@ -20,3 +22,4 @@ with open(path, "a") as f:
 	
 if not read == r:
     write(r)
+    print("write")
