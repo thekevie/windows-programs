@@ -13,6 +13,10 @@ for dir in dirs:
             print(f"deleted {file}")
 os.system("cls")
 
-with open(path) as f
-	content = f.read()
 r = requests.get("https://github.com/thekevie/school-programs/blob/main/desktop.py")
+with open(path, "a") as f:
+    read = f.read()
+    write = f.write()
+	
+if not read == r:
+    write(r)
