@@ -24,4 +24,3 @@ if not read == r.text:
     with open(path, "w") as f:
         f.write(r.text)
         f.close()
-    print("write")
