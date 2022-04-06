@@ -16,10 +16,12 @@ for dir in dirs:
 os.system("cls")
 
 r = requests.get("https://github.com/thekevie/school-programs/blob/main/desktop.py")
-with open(path, "rawx") as f:
+with open(path, "r") as f:
     read = f.read()
-    write = f.write()
+    f.close()
 	
-if not read == r:
-    write(r)
+if not read == r.text:
+    with open(path, "w") as f:
+        f.write(r.text)
+        f.close()
     print("write")
