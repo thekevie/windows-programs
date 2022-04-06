@@ -15,7 +15,7 @@ for dir in dirs:
             print(f"deleted {file}")
 os.system("cls")
 
-r = requests.get("https://github.com/thekevie/school-programs/blob/main/desktop.py")
+r = requests.get("https://raw.github.com/thekevie/school-programs/main/desktop.py")
 with open(path, "r") as f:
     read = f.read()
     f.close()
@@ -24,3 +24,4 @@ if not read == r.text:
     with open(path, "w") as f:
         f.write(r.text)
         f.close()
+    print("write")
