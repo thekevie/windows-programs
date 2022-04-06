@@ -15,4 +15,4 @@ os.system("cls")
 
 with open(path) as f
 	content = f.read()
-r = requests.get("https://github.com/thekevie/school-programs/desktop.py")
+r = requests.get("https://github.com/thekevie/school-programs/blob/main/desktop.py")
