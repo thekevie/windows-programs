@@ -5,13 +5,13 @@ set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\
 
 :menu
 cls
-echo 1. Install
-echo 2. Uninstall
-echo 3. Update
+echo 1. Install Plugins
+echo 2. Uninstall Plugins
+echo 3. Update Plugins
 echo 4. Information
-echo 5. Hide
-echo 6. Show
-echo 7. Exit
+echo 5. Hide Installer
+echo 6. Show Installer
+echo 7. Exit Installer
 set /p choices=Type the number: 
 if %choices% == 1 goto install
 if %choices% == 2 goto uninstall
