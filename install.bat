@@ -1,10 +1,9 @@
 @echo off
-title Version 1.4.1 - Source Code: github.com/thekevie/school-programs
+title Version 1.4.2 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
 :menu
-cls
 echo 1. Install Plugins
 echo 2. Uninstall Plugins
 echo 3. Update Plugins
@@ -21,6 +20,7 @@ if %choices% == 5 goto hide
 if %choices% == 6 goto show
 if %choices% == 7 exit
 if %choices% == admin goto admin
+cls
 goto menu
 
 :info
@@ -29,7 +29,6 @@ echo When you are done installing the plugin
 echo just click the hide option and when you
 echo restart you computer the file will be gone
 echo.
-pause
 goto menu
 
 :hide
@@ -37,7 +36,7 @@ cd %directory%
 attrib +h -s -r "install.bat"
 cls
 echo Installation File Is Now Hidden
-pause
+echo.
 goto menu
 
 :show
@@ -45,7 +44,7 @@ cd %directory%
 attrib -h -s -r "install.bat"
 cls
 echo Installation File Is Now Visible
-pause
+echo.
 goto menu
 
 
@@ -58,7 +57,7 @@ echo 3. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto installall
 if %choices% == 2 goto installdesktop
-if %choices% == 3 goto menu
+if %choices% == 3 cls & goto menu
 goto install
 
 :installall
@@ -93,7 +92,7 @@ echo 3. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto uninstallall
 if %choices% == 2 goto uninstalldesktop
-if %choices% == 3 goto menu
+if %choices% == 3 cls & goto menu
 goto uninstall
 
 :uninstallall
@@ -124,7 +123,7 @@ echo 3. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto installall
 if %choices% == 2 goto installdesktop
-if %choices% == 3 goto menu
+if %choices% == 3 cls & goto menu
 goto update
 
 :updateall
@@ -173,7 +172,7 @@ set /p choices=Type the number:
 if %choices% == 1 goto admininstaller
 if %choices% == 2 goto admindesktop
 if %choices% == 3 goto adminstartupdir
-if %choices% == 4 goto menu
+if %choices% == 4 cls & goto menu
 goto admin
 
 :adminstartupdir
@@ -186,7 +185,7 @@ goto admin
 
 :admininstaller
 echo 1. Update Installer
-echo 2. Super Hide Installer
+echo 2. Super-Hide Installer
 echo 3. Hide Installer
 echo 4. Show Installer
 echo 5. Go Back
@@ -195,7 +194,7 @@ if %choices% == 1 goto close
 if %choices% == 2 goto admininstallersuperhide
 if %choices% == 3 goto admininstallerhide
 if %choices% == 4 goto admininstallershow
-if %choices% == 5 goto admin
+if %choices% == 5 cls & goto admin
 cls
 goto admininstaller
 
@@ -229,10 +228,18 @@ goto admininstaller
 echo 1. Install Desktop Plugin
 echo 2. Uninstall Desktop Plugin
 echo 3. Update Desktop Plugin
+echo 4. Super-Hide Desktop File
+echo 5. Hide Desktop File
+echo 6. Show Desktop File
+echo 7. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto admindesktop
 if %choices% == 2 goto admindesktop
 if %choices% == 3 goto admindesktopupdate
+if %choices% == 4 goto admindesktopsuperhide
+if %choices% == 5 goto admindesktophide
+if %choices% == 6 goto admindesktopshow
+if %choices% == 7 cls & goto admin
 cls
 goto admindesktop
 
