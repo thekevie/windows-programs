@@ -1,5 +1,5 @@
 @echo off
-title Version 1.5.1 - Source Code: github.com/thekevie/school-programs
+title Version 1.5.2 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -203,7 +203,7 @@ echo 2. Super-Hide Installer
 echo 3. Hide Installer
 echo 4. Show Installer
 echo 5. Go Back
-set /p choices=Type the number:
+set /p choices=Type the number: 
 if %choices% == 1 goto close
 if %choices% == 2 goto admininstallersuperhide
 if %choices% == 3 goto admininstallerhide
