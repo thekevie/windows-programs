@@ -1,5 +1,5 @@
 @echo off
-title Version 1.4.7 - Source Code: github.com/thekevie/school-programs
+title Version 1.4.8 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
