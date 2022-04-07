@@ -19,8 +19,8 @@ if %choices% == 4 goto info
 if %choices% == 5 goto hide
 if %choices% == 6 goto show
 if %choices% == 7 goto close
-if %choices% == close goto close
-if %choices% == exit goto close
+if %choices% == close goto exit
+if %choices% == exit goto exit
 if %choices% == admin cls & goto admin
 cls
 goto menu
@@ -61,8 +61,8 @@ if %choices% == 1 goto installall
 if %choices% == 2 goto installdesktop
 if %choices% == 3 cls & goto menu
 if %choices% == back cls & goto menu
-if %choices% == close goto close
-if %choices% == exit goto close
+if %choices% == close goto exit
+if %choices% == exit goto exit
 goto install
 
 :installall
@@ -99,8 +99,8 @@ if %choices% == 1 goto uninstallall
 if %choices% == 2 goto uninstalldesktop
 if %choices% == 3 cls & goto menu
 if %choices% == back cls & goto menu
-if %choices% == close goto close
-if %choices% == exit goto close
+if %choices% == close goto exit
+if %choices% == exit goto exit
 goto uninstall
 
 :uninstallall
@@ -133,8 +133,8 @@ if %choices% == 1 goto updateall
 if %choices% == 2 goto updatedesktop
 if %choices% == 3 cls & goto menu
 if %choices% == back cls & goto menu
-if %choices% == close goto close
-if %choices% == exit goto close
+if %choices% == close goto exit
+if %choices% == exit goto exit
 goto update
 
 :updateall
@@ -184,8 +184,8 @@ if %choices% == 2 cls & goto admindesktop
 if %choices% == 3 adminstartupdir
 if %choices% == 4 cls & goto menu
 if %choices% == back cls & goto menu
-if %choices% == close goto close
-if %choices% == exit goto close
+if %choices% == close goto exit
+if %choices% == exit goto exit
 cls
 goto admin
 
@@ -210,8 +210,8 @@ if %choices% == 3 goto admininstallerhide
 if %choices% == 4 goto admininstallershow
 if %choices% == 5 cls & goto admin
 if %choices% == back cls & goto admin
-if %choices% == close goto close
-if %choices% == exit goto close
+if %choices% == close goto exit
+if %choices% == exit goto exit
 cls
 goto admininstaller
 
@@ -258,8 +258,8 @@ if %choices% == 5 goto admindesktophide
 if %choices% == 6 goto admindesktopshow
 if %choices% == 7 cls & goto admin
 if %choices% == back cls & goto admin
-if %choices% == close goto close
-if %choices% == exit goto close
+if %choices% == close goto exit
+if %choices% == exit goto exit
 cls
 goto admindesktop
 
@@ -319,4 +319,9 @@ echo.
 goto admindesktop
 
 :exit
+cd %temp%
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
+cd %directory%
+copy /y "%temp%\install.bat" "install.bat"
+del /q /f %temp%\install.bat
 exit
