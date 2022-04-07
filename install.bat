@@ -1,5 +1,5 @@
 @echo off
-title Version 1.4.9 - Source Code: github.com/thekevie/school-programs
+title Version 1.5.0 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -27,9 +27,9 @@ goto menu
 
 :info
 cls
-echo When you are done installing the plugin 
-echo just click the hide option and when you
-echo restart you computer the file will be gone
+echo When you are done installing the plugins
+echo just click the hide option and the next time
+echo you restart you computer the file will be hidden
 echo.
 goto menu
 
