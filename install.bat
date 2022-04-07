@@ -1,5 +1,5 @@
 @echo off
-title Version 1.4.3 - Source Code: github.com/thekevie/school-programs
+title Version 1.4.4 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -121,8 +121,8 @@ echo 1. Update All Plugins
 echo 2. Update Desktop Plugin
 echo 3. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 goto installall
-if %choices% == 2 goto installdesktop
+if %choices% == 1 goto updateall
+if %choices% == 2 goto updatedesktop
 if %choices% == 3 cls & goto menu
 goto update
 
