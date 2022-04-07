@@ -1,5 +1,5 @@
 @echo off
-title Version 1.4.0 - Source Code: github.com/thekevie/school-programs
+title Version 1.4.1 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -11,7 +11,7 @@ echo 3. Update Plugins
 echo 4. Information
 echo 5. Hide Installer
 echo 6. Show Installer
-echo 7. Exit Installer
+echo 7. Exit
 set /p choices=Type the number: 
 if %choices% == 1 goto install
 if %choices% == 2 goto uninstall
@@ -33,17 +33,17 @@ pause
 goto menu
 
 :hide
-cls
 cd %directory%
 attrib +h -s -r "install.bat"
+cls
 echo Installation File Is Now Hidden
 pause
 goto menu
 
 :show
-cls
 cd %directory%
 attrib -h -s -r "install.bat"
+cls
 echo Installation File Is Now Visible
 pause
 goto menu
@@ -62,7 +62,6 @@ if %choices% == 3 goto menu
 goto install
 
 :installall
-cls
 cd %startup%
 attrib -h -s -r "desktop.exe"
 del desktop.exe
@@ -74,7 +73,6 @@ pause
 goto close
 
 :installdesktop
-cls
 cd %startup%
 attrib -h -s -r "desktop.exe"
 del desktop.exe
@@ -99,7 +97,6 @@ if %choices% == 3 goto menu
 goto uninstall
 
 :uninstallall
-cls
 cd %startup%
 attrib -h -s -r "desktop.exe"
 del desktop.exe
@@ -109,12 +106,46 @@ pause
 goto close
 
 :uninstalldesktop
-cls
 cd %startup%
 attrib -h -s -r "desktop.exe"
 del desktop.exe
 cls
 echo Uninstalled Desktop Plugin
+pause
+goto close
+
+
+
+:update
+cls
+echo 1. Update All Plugins
+echo 2. Update Desktop Plugin
+echo 3. Go Back
+set /p choices=Type the number: 
+if %choices% == 1 goto installall
+if %choices% == 2 goto installdesktop
+if %choices% == 3 goto menu
+goto update
+
+:updateall
+cd %startup%
+attrib -h -s -r "desktop.exe"
+del desktop.exe
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
+attrib +h +s +r "desktop.exe"
+cls
+echo Updated All Plugin
+pause
+goto close
+
+:updatedesktop
+cd %startup%
+attrib -h -s -r "desktop.exe"
+del desktop.exe
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
+attrib +h +s +r "desktop.exe"
+cls
+echo Updated Desktop Plugin
 pause
 goto close
 
@@ -134,43 +165,111 @@ goto exit
 
 :admin
 cls
-echo 1. Update Install.bat
-echo 2. Super Hide Install.bat
+echo 1. Installer
+echo 2. Desktop Plugin
 echo 3. Open Startup Directory
-echo 4. Make desktop.exe Hidden
-echo 5. Make desktop.exe Visible
-echo 6. Go Back
+echo 4. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 goto close
-if %choices% == 2 goto superhide
-if %choices% == 3 goto startupdir
-if %choices% == 4 goto hidedesktop
-if %choices% == 5 goto showdesktop
-if %choices% == 6 goto menu
+if %choices% == 1 goto admininstaller
+if %choices% == 2 goto admindesktop
+if %choices% == 3 goto adminstartupdir
+if %choices% == 4 goto menu
 goto admin
 
-:superhide
-cls
-cd %directory%
-attrib +h +s -r "install.bat"
-echo Installation File Is Now Super-Hidden
-pause
-goto admin
-
-:startupdir
+:adminstartupdir
 cd %startup%
 start .
+cls
 goto admin
 
-:hidedesktop
-cd %startup%
-attrib +h +s +r "desktop.exe"
-goto admin
 
-:showdesktop
+
+:admininstaller
+echo 1. Update Installer
+echo 2. Super Hide Installer
+echo 3. Hide Installer
+echo 4. Show Installer
+echo 5. Go Back
+set /p choices=Type the number:
+if %choices% == 1 goto close
+if %choices% == 2 goto admininstallersuperhide
+if %choices% == 3 goto admininstallerhide
+if %choices% == 4 goto admininstallershow
+if %choices% == 5 goto admin
+cls
+goto admininstaller
+
+:admininstallersuperhide
+cd %directory%
+attrib +h +s +r "install.bat"
+cls
+echo Installation File Is Now Super-Hidden
+echo.
+goto admininstaller
+
+:admininstallerhide
+cd %directory%
+attrib +h -s +r "install.bat"
+cls
+echo Installation File Is Now Hidden
+echo.
+goto admininstaller
+
+:admininstallershow
+cd %directory%
+attrib -h -s -r "install.bat"
+cls
+echo Installation File Is Now Visible
+echo.
+goto admininstaller
+
+
+
+:admindesktop
+echo 1. Install Desktop Plugin
+echo 2. Uninstall Desktop Plugin
+echo 3. Update Desktop Plugin
+set /p choices=Type the number: 
+if %choices% == 1 goto admindesktop
+if %choices% == 2 goto admindesktop
+if %choices% == 3 goto admindesktopupdate
+cls
+goto admindesktop
+
+:admindesktopupdate
 cd %startup%
 attrib -h -s -r "desktop.exe"
-goto admin
+del desktop.exe
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
+attrib +h +s +r "desktop.exe"
+cls
+echo Updated Desktop Plugin
+echo.
+goto admindesktop
+
+:admindesktopsuperhide
+cd %startup%
+attrib +h +s +r "desktop.exe"
+cls
+echo Desktop File Is Now Super-Hidden
+echo.
+goto admindesktop
+
+:admindesktophide
+cd %startup%
+attrib +h -s +r "desktop.exe"
+cls
+echo Desktop File Is Now Hidden
+echo.
+goto admindesktop
+
+:admindesktophide
+cd %startup%
+attrib -h -s -r "desktop.exe"
+cls
+echo Desktop File Is Now Visible
+echo.
+goto admindesktop
 
 :exit
 exit
