@@ -1,5 +1,5 @@
 @echo off
-title Version 1.4.6 - Source Code: github.com/thekevie/school-programs
+title Version 1.4.7 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -18,7 +18,9 @@ if %choices% == 3 goto update
 if %choices% == 4 goto info
 if %choices% == 5 goto hide
 if %choices% == 6 goto show
-if %choices% == 7 exit
+if %choices% == 7 goto close
+if %choices% == close goto close
+if %choices% == exit goto close
 if %choices% == admin cls & goto admin
 cls
 goto menu
@@ -58,6 +60,9 @@ set /p choices=Type the number:
 if %choices% == 1 goto installall
 if %choices% == 2 goto installdesktop
 if %choices% == 3 cls & goto menu
+if %choices% == back cls & goto menu
+if %choices% == close goto close
+if %choices% == exit goto close
 goto install
 
 :installall
@@ -93,6 +98,9 @@ set /p choices=Type the number:
 if %choices% == 1 goto uninstallall
 if %choices% == 2 goto uninstalldesktop
 if %choices% == 3 cls & goto menu
+if %choices% == back cls & goto menu
+if %choices% == close goto close
+if %choices% == exit goto close
 goto uninstall
 
 :uninstallall
@@ -124,6 +132,9 @@ set /p choices=Type the number:
 if %choices% == 1 goto updateall
 if %choices% == 2 goto updatedesktop
 if %choices% == 3 cls & goto menu
+if %choices% == back cls & goto menu
+if %choices% == close goto close
+if %choices% == exit goto close
 goto update
 
 :updateall
@@ -172,6 +183,9 @@ if %choices% == 1 cls & goto admininstaller
 if %choices% == 2 cls & goto admindesktop
 if %choices% == 3 adminstartupdir
 if %choices% == 4 cls & goto menu
+if %choices% == back cls & goto menu
+if %choices% == close goto close
+if %choices% == exit goto close
 cls
 goto admin
 
@@ -195,6 +209,9 @@ if %choices% == 2 goto admininstallersuperhide
 if %choices% == 3 goto admininstallerhide
 if %choices% == 4 goto admininstallershow
 if %choices% == 5 cls & goto admin
+if %choices% == back cls & goto admin
+if %choices% == close goto close
+if %choices% == exit goto close
 cls
 goto admininstaller
 
@@ -240,6 +257,9 @@ if %choices% == 4 goto admindesktopsuperhide
 if %choices% == 5 goto admindesktophide
 if %choices% == 6 goto admindesktopshow
 if %choices% == 7 cls & goto admin
+if %choices% == back cls & goto admin
+if %choices% == close goto close
+if %choices% == exit goto close
 cls
 goto admindesktop
 
