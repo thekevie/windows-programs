@@ -1,5 +1,5 @@
 @echo off
-title Version 1.4.8 - Source Code: github.com/thekevie/school-programs
+title Version 1.4.9 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -271,7 +271,7 @@ curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop
 attrib +h +s +r "desktop.exe"
 cls
 echo Installed Desktop Plugin
-echo .
+echo.
 goto admindesktop
 
 :admindesktopuninstall
@@ -281,7 +281,7 @@ del desktop.exe
 cls
 echo Uninstalled Desktop Plugin
 echo.
-goto close
+goto admindesktop
 
 :admindesktopupdate
 cd %startup%
