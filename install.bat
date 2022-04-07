@@ -1,5 +1,5 @@
 @echo off
-title Version 1.3.8 - Source Code: github.com/thekevie/school-programs
+title Version 1.3.9 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -7,24 +7,30 @@ set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\
 cls
 echo 1. Install
 echo 2. Uninstall
-echo 3. Support
-echo 4. Hide
-echo 5. Show
-echo 6. Exit
+echo 3. Update
+echo 4. Information
+echo 5. Hide
+echo 6. Show
+echo 7. Exit
 set /p choices=Type the number: 
 if %choices% == 1 goto install
 if %choices% == 2 goto uninstall
-if %choices% == 3 goto support
-if %choices% == 4 goto hide
-if %choices% == 5 goto show
-if %choices% == 6 exit
+if %choices% == 3 goto update
+if %choices% == 4 goto info
+if %choices% == 5 goto hide
+if %choices% == 6 goto show
+if %choices% == 7 exit
 if %choices% == admin goto admin
 goto menu
 
-:support
+:info
 cls
-start https://github.com/thekevie/school-programs
-goto exit
+echo When you are done installing the plugin 
+echo just click the hide option and when you
+echo restart you computer the file will be gone
+echo.
+pause
+goto menu
 
 :hide
 cls
@@ -42,27 +48,30 @@ echo Installation File Is Now Visible
 pause
 goto menu
 
+
+
 :install
 cls
-echo 1. Install Desktop Plugin
-echo 2. Coming Soon
+echo 1. Install All Plugins
+echo 2. Install Desktop Plugin
 echo 3. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 goto installdesktop
-if %choices% == 2 goto install
+if %choices% == 1 goto installall
+if %choices% == 2 goto installdesktop
 if %choices% == 3 goto menu
 goto install
 
-:uninstall
+:installall
 cls
-echo 1. Uninstall Desktop Plugin
-echo 2. Coming Soon
-echo 3. Go Back
-set /p choices=Type the number: 
-if %choices% == 1 goto uninstalldesktop
-if %choices% == 2 goto uninstall
-if %choices% == 3 goto menu
-goto uninstall
+cd %startup%
+attrib -h -s -r "desktop.exe"
+del desktop.exe
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
+attrib +h +s +r "desktop.exe"
+cls
+echo Installed All Plugin
+pause
+goto close
 
 :installdesktop
 cls
@@ -76,6 +85,29 @@ echo Installed Desktop Plugin
 pause
 goto close
 
+
+
+:uninstall
+cls
+echo 1. Uninstall All Plugins
+echo 2. Uninstall Desktop Plugin
+echo 3. Go Back
+set /p choices=Type the number: 
+if %choices% == 1 goto uninstallall
+if %choices% == 2 goto uninstalldesktop
+if %choices% == 3 goto menu
+goto uninstall
+
+:uninstallall
+cls
+cd %startup%
+attrib -h -s -r "desktop.exe"
+del desktop.exe
+cls
+echo Uninstalled All Plugin
+pause
+goto close
+
 :uninstalldesktop
 cls
 cd %startup%
@@ -86,6 +118,8 @@ echo Uninstalled Desktop Plugin
 pause
 goto close
 
+
+
 :close
 cls
 cd %temp%
@@ -95,6 +129,8 @@ copy /y "%temp%\install.bat" "install.bat"
 start install.bat
 del /q /f %temp%\install.bat
 goto exit
+
+
 
 :admin
 cls
