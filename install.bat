@@ -1,5 +1,5 @@
 @echo off
-title Version 1.3.7 - Source Code: github.com/thekevie/school-programs
+title Version 1.3.8 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -67,10 +67,10 @@ goto uninstall
 :installdesktop
 cls
 cd %startup%
-attrib -h -s -r "desktop.bat"
+attrib -h -s -r "desktop.exe"
 del desktop.bat
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-attrib +h +s +r "desktop.bat"
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
+attrib +h +s +r "desktop.exe"
 cls
 echo Installed Desktop Plugin
 pause
@@ -79,7 +79,7 @@ goto close
 :uninstalldesktop
 cls
 cd %startup%
-attrib -h -s -r "desktop.bat"
+attrib -h -s -r "desktop.exe"
 del desktop.bat
 cls
 echo Uninstalled Desktop Plugin
@@ -101,8 +101,8 @@ cls
 echo 1. Update Install.bat
 echo 2. Super Hide Install.bat
 echo 3. Open Startup Directory
-echo 4. Make desktop.bat Hidden
-echo 5. Make desktop.bat Visible
+echo 4. Make desktop.exe Hidden
+echo 5. Make desktop.exe Visible
 echo 6. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto close
@@ -128,12 +128,12 @@ goto admin
 
 :hidedesktop
 cd %startup%
-attrib +h +s +r "desktop.bat"
+attrib +h +s +r "desktop.exe"
 goto admin
 
 :showdesktop
 cd %startup%
-attrib -h -s -r "desktop.bat"
+attrib -h -s -r "desktop.exe"
 goto admin
 
 :exit
