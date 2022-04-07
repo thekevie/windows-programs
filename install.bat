@@ -68,7 +68,7 @@ goto uninstall
 cls
 cd %startup%
 attrib -h -s -r "desktop.exe"
-del desktop.bat
+del desktop.exe
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
 attrib +h +s +r "desktop.exe"
 cls
@@ -80,7 +80,7 @@ goto close
 cls
 cd %startup%
 attrib -h -s -r "desktop.exe"
-del desktop.bat
+del desktop.exe
 cls
 echo Uninstalled Desktop Plugin
 pause
