@@ -1,5 +1,5 @@
 @echo off
-title Version 1.4.4 - Source Code: github.com/thekevie/school-programs
+title Version 1.4.5 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -168,9 +168,9 @@ echo 2. Desktop Plugin
 echo 3. Open Startup Directory
 echo 4. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 goto cls & admininstaller
-if %choices% == 2 goto cls & admindesktop
-if %choices% == 3 goto adminstartupdir
+if %choices% == 1 cls & goto admininstaller
+if %choices% == 2 cls & goto admindesktop
+if %choices% == 3 adminstartupdir
 if %choices% == 4 cls & goto menu
 cls
 goto admin
