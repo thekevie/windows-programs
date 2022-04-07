@@ -1,5 +1,5 @@
 @echo off
-title Version 1.4.2 - Source Code: github.com/thekevie/school-programs
+title Version 1.4.3 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -19,7 +19,7 @@ if %choices% == 4 goto info
 if %choices% == 5 goto hide
 if %choices% == 6 goto show
 if %choices% == 7 exit
-if %choices% == admin goto admin
+if %choices% == admin cls & goto admin
 cls
 goto menu
 
@@ -163,16 +163,16 @@ goto exit
 
 
 :admin
-cls
 echo 1. Installer
 echo 2. Desktop Plugin
 echo 3. Open Startup Directory
 echo 4. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 goto admininstaller
-if %choices% == 2 goto admindesktop
+if %choices% == 1 goto cls & admininstaller
+if %choices% == 2 goto cls & admindesktop
 if %choices% == 3 goto adminstartupdir
 if %choices% == 4 cls & goto menu
+cls
 goto admin
 
 :adminstartupdir
@@ -242,6 +242,26 @@ if %choices% == 6 goto admindesktopshow
 if %choices% == 7 cls & goto admin
 cls
 goto admindesktop
+
+:admindesktopinstall
+cd %startup%
+attrib -h -s -r "desktop.exe"
+del desktop.exe
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
+attrib +h +s +r "desktop.exe"
+cls
+echo Installed Desktop Plugin
+echo .
+goto admindesktop
+
+:admindesktopuninstall
+cd %startup%
+attrib -h -s -r "desktop.exe"
+del desktop.exe
+cls
+echo Uninstalled Desktop Plugin
+echo.
+goto close
 
 :admindesktopupdate
 cd %startup%
