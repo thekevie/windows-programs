@@ -1,5 +1,5 @@
 @echo off
-title Version 1.4.5 - Source Code: github.com/thekevie/school-programs
+title Version 1.4.6 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -233,8 +233,8 @@ echo 5. Hide Desktop File
 echo 6. Show Desktop File
 echo 7. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 goto admindesktop
-if %choices% == 2 goto admindesktop
+if %choices% == 1 goto admindesktopinstall
+if %choices% == 2 goto admindesktopuninstall
 if %choices% == 3 goto admindesktopupdate
 if %choices% == 4 goto admindesktopsuperhide
 if %choices% == 5 goto admindesktophide
