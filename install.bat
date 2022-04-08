@@ -1,5 +1,5 @@
 @echo off
-title Version 1.6.3 - Source Code: github.com/thekevie/school-programs
+title Version 1.6.4 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
@@ -74,7 +74,6 @@ echo link.TargetPath = "%plugindir%\desktop.bat" >> %code%
 echo link.Save >> %code%
 cscript /nologo %code%
 del %code%
-pause
 cls
 echo Installed All Plugin
 pause
