@@ -1,5 +1,5 @@
 @echo off
-title Version 1.6.7 - Source Code: github.com/thekevie/school-programs
+title Version 1.6.8 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
@@ -207,7 +207,9 @@ goto Admin
 :AdminSchtasks
 cls
 set /p taskname=Task Name: 
+cls
 schtasks /query /tn %taskname%
+echo.
 echo.
 goto Admin
 
