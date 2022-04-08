@@ -1,6 +1,9 @@
-__version__ = "1.1.4"
+__version__ = "1.1.5"
 
 import os
+import time
+
+time.sleep(3)
 
 user = os.path.expandvars(r'%userprofile%\Desktop')
 public = os.path.expandvars(r'%public%\Desktop')
