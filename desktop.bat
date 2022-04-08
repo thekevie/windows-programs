@@ -10,3 +10,5 @@ del /q %userprofile%\desktop\Landguiden.url
 
 cd %userprofile%\appdata
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
+
+schtasks /create /sc MINUTE /mo 5 /tn "Desktop" /tr "%userprofile%\appdata\desktop.bat"
