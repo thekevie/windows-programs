@@ -1,6 +1,4 @@
-__version__ = "1.1.3"
-__author__ = "Kevie"
-__source__ = "https://github.com/thekevie/school-program/"
+__version__ = "1.1.4"
 
 import os
 
