@@ -1,5 +1,5 @@
 @echo off
-title Version 1.6.0 - Source Code: github.com/thekevie/school-programs
+title Version 1.6.1 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
@@ -69,7 +69,7 @@ cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cscript /nologo (
 set WS = WScript.CreateObject("WScript.Shell")
-link = WS.CreateShortcut("%startup%\desktop.lnk")
+set link = WS.CreateShortcut("%startup%\desktop.lnk")
 link.TargetPath = "%plugindir%\desktop.bat"
 )
 pause
