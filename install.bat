@@ -1,5 +1,5 @@
 @echo off
-title Version 1.5.4 - Source Code: github.com/thekevie/school-programs
+title Version 1.5.5 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -310,7 +310,7 @@ echo Desktop File Is Now Hidden
 echo.
 goto admindesktop
 
-:admindesktophide
+:admindesktopshow
 cd %startup%
 attrib -h -s -r "desktop.exe"
 cls
