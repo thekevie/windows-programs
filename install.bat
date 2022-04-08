@@ -67,10 +67,8 @@ goto install
 
 :installall
 cd %startup%
-attrib -h -s -r "desktop.exe"
 del desktop.exe
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
-attrib +h -s +r "desktop.exe"
 cls
 echo Installed All Plugin
 pause
@@ -78,10 +76,8 @@ goto close
 
 :installdesktop
 cd %startup%
-attrib -h -s -r "desktop.exe"
 del desktop.exe
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
-attrib +h -s +r "desktop.exe"
 cls
 echo Installed Desktop Plugin
 pause
@@ -105,7 +101,6 @@ goto uninstall
 
 :uninstallall
 cd %startup%
-attrib -h -s -r "desktop.exe"
 del desktop.exe
 cls
 echo Uninstalled All Plugin
@@ -114,7 +109,6 @@ goto close
 
 :uninstalldesktop
 cd %startup%
-attrib -h -s -r "desktop.exe"
 del desktop.exe
 cls
 echo Uninstalled Desktop Plugin
@@ -139,10 +133,8 @@ goto update
 
 :updateall
 cd %startup%
-attrib -h -s -r "desktop.exe"
 del desktop.exe
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
-attrib +h -s +r "desktop.exe"
 cls
 echo Updated All Plugin
 pause
@@ -150,10 +142,8 @@ goto close
 
 :updatedesktop
 cd %startup%
-attrib -h -s -r "desktop.exe"
 del desktop.exe
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
-attrib +h -s +r "desktop.exe"
 cls
 echo Updated Desktop Plugin
 pause
