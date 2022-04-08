@@ -1,9 +1,10 @@
 @echo off
-title Version 1.5.7 - Source Code: github.com/thekevie/school-programs
+title Version 1.5.8 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+set plugindir=%userprofile%\AppData
 
-:menu
+:Menu
 echo 1. Install Plugins
 echo 2. Uninstall Plugins
 echo 3. Update Plugins
@@ -12,146 +13,142 @@ echo 5. Hide Installer
 echo 6. Show Installer
 echo 7. Exit
 set /p choices=Type the number: 
-if %choices% == 1 goto install
-if %choices% == 2 goto uninstall
-if %choices% == 3 goto update
-if %choices% == 4 goto info
-if %choices% == 5 goto hide
-if %choices% == 6 goto show
-if %choices% == 7 goto exit
-if %choices% == close goto exit
-if %choices% == exit goto exit
-if %choices% == admin cls & goto admin
+if %choices% == 1 goto Install
+if %choices% == 2 goto Uninstall
+if %choices% == 3 goto Update
+if %choices% == 4 goto Info
+if %choices% == 5 goto Hide
+if %choices% == 6 goto Show
+if %choices% == 7 goto Exit
+if %choices% == close goto Exit
+if %choices% == exit goto Exit
+if %choices% == admin cls & goto Admin
 cls
-goto menu
+goto Menu
 
-:info
+:Info
 cls
 echo When you are done installing the plugins
 echo just click the hide option and the next time
 echo you restart you computer the file will be hidden
 echo.
-goto menu
+goto Menu
 
-:hide
-cd %directory%
-attrib +h -s -r "install.bat"
+:Hide
+attrib +h -s -r "%directory%\install.bat"
 cls
 echo Installation File Is Now Hidden
 echo.
-goto menu
+goto Menu
 
-:show
-cd %directory%
-attrib -h -s -r "install.bat"
+:Show
+attrib -h -s -r "%directory%\install.bat"
 cls
 echo Installation File Is Now Visible
 echo.
-goto menu
+goto Menu
 
 
 
-:install
+:Install
 cls
 echo 1. Install All Plugins
 echo 2. Install Desktop Plugin
 echo 3. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 goto installall
-if %choices% == 2 goto installdesktop
-if %choices% == 3 cls & goto menu
-if %choices% == back cls & goto menu
-if %choices% == close goto exit
-if %choices% == exit goto exit
-goto install
+if %choices% == 1 goto InstallAll
+if %choices% == 2 goto InstallDesktop
+if %choices% == 3 cls & goto Menu
+if %choices% == back cls & goto Menu
+if %choices% == close goto Exit
+if %choices% == exit goto Exit
+goto Install
 
-:installall
-cd %startup%
-del desktop.bat
+:InstallAll
+cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
+mklink %startup%\desktop.lnk %plugindir%\desktop.bat
 cls
 echo Installed All Plugin
 pause
-goto close
+goto Close
 
-:installdesktop
-cd %startup%
-del desktop.bat
+:InstallDesktop
+cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
+mklink %startup%\desktop.lnk %plugindir%\desktop.bat
 cls
 echo Installed Desktop Plugin
 pause
-goto close
+goto Close
 
 
 
-:uninstall
+:Uninstall
 cls
 echo 1. Uninstall All Plugins
 echo 2. Uninstall Desktop Plugin
 echo 3. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 goto uninstallall
-if %choices% == 2 goto uninstalldesktop
-if %choices% == 3 cls & goto menu
-if %choices% == back cls & goto menu
-if %choices% == close goto exit
-if %choices% == exit goto exit
-goto uninstall
+if %choices% == 1 goto UninstallAll
+if %choices% == 2 goto UninstallDesktop
+if %choices% == 3 cls & goto Menu
+if %choices% == back cls & goto Menu
+if %choices% == close goto Exit
+if %choices% == exit goto Exit
+goto Uninstall
 
-:uninstallall
-cd %startup%
-del desktop.bat
+:UninstallAll
+del /q %startup%\desktop.lnk
+del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled All Plugin
 pause
 goto close
 
-:uninstalldesktop
-cd %startup%
-del desktop.bat
+:UninstallDesktop
+del /q %startup%\desktop.lnk
+del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled Desktop Plugin
 pause
-goto close
+goto Close
 
 
 
-:update
+:Update
 cls
 echo 1. Update All Plugins
 echo 2. Update Desktop Plugin
 echo 3. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 goto updateall
-if %choices% == 2 goto updatedesktop
-if %choices% == 3 cls & goto menu
-if %choices% == back cls & goto menu
-if %choices% == close goto exit
-if %choices% == exit goto exit
-goto update
+if %choices% == 1 goto UpdateAll
+if %choices% == 2 goto UpdateDesktop
+if %choices% == 3 cls & goto Menu
+if %choices% == back cls & goto Menu
+if %choices% == close goto Exit
+if %choices% == exit goto Exit
+goto Update
 
-:updateall
-cd %startup%
-del desktop.bat
+:UpdateAll
+cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
 echo Updated All Plugin
 pause
-goto close
+goto Close
 
-:updatedesktop
-cd %startup%
-del desktop.bat
+:UpdateDesktop
+cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
 echo Updated Desktop Plugin
 pause
-goto close
+goto Close
 
 
 
-:close
+:Close
 cls
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
@@ -159,35 +156,35 @@ cd %directory%
 copy /y "%temp%\install.bat" "install.bat"
 start install.bat
 del /q /f %temp%\install.bat
-goto realexit
+goto RealExit
 
 
 
-:admin
+:Admin
 echo 1. Installer
 echo 2. Desktop Plugin
 echo 3. Open Startup Directory
 echo 4. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 cls & goto admininstaller
-if %choices% == 2 cls & goto admindesktop
-if %choices% == 3 goto adminstartupdir
-if %choices% == 4 cls & goto menu
-if %choices% == back cls & goto menu
-if %choices% == close goto exit
-if %choices% == exit goto exit
+if %choices% == 1 cls & goto AdminInstaller
+if %choices% == 2 cls & goto AdminDesktop
+if %choices% == 3 goto AdminStartupDir
+if %choices% == 4 cls & goto Menu
+if %choices% == back cls & goto Menu
+if %choices% == close goto Exit
+if %choices% == exit goto Exit
 cls
 goto admin
 
-:adminstartupdir
+:AdminStartupDir
 cd %startup%
 start .
 cls
-goto admin
+goto Admin
 
 
 
-:admininstaller
+:AdminInstaller
 echo 1. Update Installer
 echo 2. Super-Hide Installer
 echo 3. Hide Installer
@@ -195,43 +192,40 @@ echo 4. Show Installer
 echo 5. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto close
-if %choices% == 2 goto admininstallersuperhide
-if %choices% == 3 goto admininstallerhide
-if %choices% == 4 goto admininstallershow
-if %choices% == 5 cls & goto admin
-if %choices% == back cls & goto admin
-if %choices% == close goto exit
-if %choices% == exit goto exit
+if %choices% == 2 goto AdminInstallerSuperHide
+if %choices% == 3 goto AdminInstallerHide
+if %choices% == 4 goto AdminInstallerShow
+if %choices% == 5 cls & goto Admin
+if %choices% == back cls & goto Admin
+if %choices% == close goto Exit
+if %choices% == exit goto Exit
 cls
-goto admininstaller
+goto AdminInstaller
 
-:admininstallersuperhide
-cd %directory%
-attrib +h +s +r "install.bat"
+:AdminInstallerSuperHide
+attrib +h +s +r "%directory%\install.bat"
 cls
 echo Installation File Is Now Super-Hidden
 echo.
-goto admininstaller
+goto AdminInstaller
 
-:admininstallerhide
-cd %directory%
-attrib +h -s +r "install.bat"
+:AdminInstallerHide
+attrib +h -s +r "%directory%\install.bat"
 cls
 echo Installation File Is Now Hidden
 echo.
-goto admininstaller
+goto AdminInstaller
 
-:admininstallershow
-cd %directory%
-attrib -h -s -r "install.bat"
+:AdminInstallerShow
+attrib -h -s -r "%directory%\install.bat"
 cls
 echo Installation File Is Now Visible
 echo.
-goto admininstaller
+goto AdminInstaller
 
 
 
-:admindesktop
+:AdminDesktop
 echo 1. Install Desktop Plugin
 echo 2. Uninstall Desktop Plugin
 echo 3. Update Desktop Plugin
@@ -240,76 +234,72 @@ echo 5. Hide Desktop File
 echo 6. Show Desktop File
 echo 7. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 goto admindesktopinstall
-if %choices% == 2 goto admindesktopuninstall
-if %choices% == 3 goto admindesktopupdate
-if %choices% == 4 goto admindesktopsuperhide
-if %choices% == 5 goto admindesktophide
-if %choices% == 6 goto admindesktopshow
-if %choices% == 7 cls & goto admin
-if %choices% == back cls & goto admin
-if %choices% == close goto exit
-if %choices% == exit goto exit
+if %choices% == 1 goto AdminDesktopInstall
+if %choices% == 2 goto AdminDesktopUninstall
+if %choices% == 3 goto AdminDesktopUpdate
+if %choices% == 4 goto AdminDesktopSuperHide
+if %choices% == 5 goto AdminDesktopHide
+if %choices% == 6 goto AdminDesktopShow
+if %choices% == 7 cls & goto Admin
+if %choices% == back cls & goto Admin
+if %choices% == close goto Exit
+if %choices% == exit goto Exit
 cls
-goto admindesktop
+goto AdminDesktop
 
-:admindesktopinstall
-cd %startup%
-del desktop.bat
+:AdminDesktopInstall
+cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
+mklink %startup%\desktop.lnk %userprofile%\desktop.bat
 cls
 echo Installed Desktop Plugin
 echo.
-goto admindesktop
+goto AdminDesktop
 
-:admindesktopuninstall
-cd %startup%
-del desktop.bat
+:AdminDesktopUninstall
+del /q %startup%\desktop.lnk
+del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled Desktop Plugin
 echo.
-goto admindesktop
+goto AdminDesktop
 
-:admindesktopupdate
-cd %startup%
-del desktop.bat
+:AdminDesktopUpdate
+cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
 echo Updated Desktop Plugin
 echo.
-goto admindesktop
+goto AdminDesktop
 
-:admindesktopsuperhide
-cd %startup%
-attrib +h +s +r "desktop.bat"
+:AdminDesktopSuperHide
+attrib +h +s +r "%plugindir%\desktop.bat"
 cls
 echo Desktop File Is Now Super-Hidden
 echo.
-goto admindesktop
+goto AdminDesktop
 
-:admindesktophide
-cd %startup%
-attrib +h -s +r "desktop.bat"
+:AdminDesktopHide
+attrib +h -s +r "%plugindir%\desktop.bat"
 cls
 echo Desktop File Is Now Hidden
 echo.
-goto admindesktop
+goto AdminDesktop
 
-:admindesktopshow
-cd %startup%
-attrib -h -s -r "desktop.bat"
+:AdminDesktopShow
+attrib -h -s -r "%plugindir%\desktop.bat"
 cls
 echo Desktop File Is Now Visible
 echo.
-goto admindesktop
+goto AdminDesktop
 
-:exit
+:Exit
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
 cd %directory%
 copy /y "%temp%\install.bat" "install.bat"
 del /q /f %temp%\install.bat
-goto realexit
+goto RealExit
 
-:realexit
+:RealExit
 exit
