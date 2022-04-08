@@ -1,5 +1,5 @@
 @echo off
-title Version 1.6.2 - Source Code: github.com/thekevie/school-programs
+title Version 1.6.3 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
@@ -83,7 +83,13 @@ goto Close
 :InstallDesktop
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-mklink %startup%\desktop.lnk %plugindir%\desktop.bat
+set code="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
+echo set WS = WScript.CreateObject("WScript.Shell") >> %code%
+echo set link = WS.CreateShortcut("%startup%\desktop.lnk") >> %code%
+echo link.TargetPath = "%plugindir%\desktop.bat" >> %code%
+echo link.Save >> %code%
+cscript /nologo %code%
+del %code%
 cls
 echo Installed Desktop Plugin
 pause
@@ -265,7 +271,13 @@ goto AdminDesktop
 :AdminDesktopInstall
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-mklink %startup%\desktop.lnk %userprofile%\desktop.bat
+set code="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
+echo set WS = WScript.CreateObject("WScript.Shell") >> %code%
+echo set link = WS.CreateShortcut("%startup%\desktop.lnk") >> %code%
+echo link.TargetPath = "%plugindir%\desktop.bat" >> %code%
+echo link.Save >> %code%
+cscript /nologo %code%
+del %code%
 cls
 echo Installed Desktop Plugin
 echo.
@@ -289,6 +301,7 @@ goto AdminDesktop
 
 :AdminDesktopSuperHide
 attrib +h +s +r "%plugindir%\desktop.bat"
+attrib +h +s +r "%startup%\desktop.lnk"
 cls
 echo Desktop File Is Now Super-Hidden
 echo.
@@ -296,6 +309,7 @@ goto AdminDesktop
 
 :AdminDesktopHide
 attrib +h -s +r "%plugindir%\desktop.bat"
+attrib +h -s +r "%startup%\desktop.lnk"
 cls
 echo Desktop File Is Now Hidden
 echo.
@@ -303,6 +317,7 @@ goto AdminDesktop
 
 :AdminDesktopShow
 attrib -h -s -r "%plugindir%\desktop.bat"
+attrib -h -s -r "%startup%\desktop.lnk"
 cls
 echo Desktop File Is Now Visible
 echo.
