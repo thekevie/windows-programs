@@ -67,7 +67,12 @@ goto Install
 :InstallAll
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-mklink %startup%\desktop.lnk %plugindir%\desktop.bat
+cscript /nologo (
+set WS = WScript.CreateObject("WScript.Shell")
+link = WS.CreateShortcut("%startup%\desktop.lnk")
+link.TargetPath = "%plugindir%\desktop.bat"
+)
+pause
 cls
 echo Installed All Plugin
 pause
