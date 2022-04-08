@@ -1,6 +1,6 @@
 @echo off
 
-title Desktop Plugin v1.1.9
+title Desktop Plugin v1.2.0
 
 del /q %public%\desktop\www.studi.se.url
 del /q %userprofile%\desktop\www.studi.se.url
