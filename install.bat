@@ -1,5 +1,5 @@
 @echo off
-title Version 1.5.5 - Source Code: github.com/thekevie/school-programs
+title Version 1.5.6 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -70,7 +70,7 @@ cd %startup%
 attrib -h -s -r "desktop.exe"
 del desktop.exe
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
-attrib +h +s +r "desktop.exe"
+attrib +h -s +r "desktop.exe"
 cls
 echo Installed All Plugin
 pause
@@ -81,7 +81,7 @@ cd %startup%
 attrib -h -s -r "desktop.exe"
 del desktop.exe
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
-attrib +h +s +r "desktop.exe"
+attrib +h -s +r "desktop.exe"
 cls
 echo Installed Desktop Plugin
 pause
@@ -142,7 +142,7 @@ cd %startup%
 attrib -h -s -r "desktop.exe"
 del desktop.exe
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
-attrib +h +s +r "desktop.exe"
+attrib +h -s +r "desktop.exe"
 cls
 echo Updated All Plugin
 pause
@@ -153,7 +153,7 @@ cd %startup%
 attrib -h -s -r "desktop.exe"
 del desktop.exe
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
-attrib +h +s +r "desktop.exe"
+attrib +h -s +r "desktop.exe"
 cls
 echo Updated Desktop Plugin
 pause
