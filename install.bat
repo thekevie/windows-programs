@@ -1,5 +1,5 @@
 @echo off
-title Version 1.5.3 - Source Code: github.com/thekevie/school-programs
+title Version 1.5.4 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -18,7 +18,7 @@ if %choices% == 3 goto update
 if %choices% == 4 goto info
 if %choices% == 5 goto hide
 if %choices% == 6 goto show
-if %choices% == 7 goto close
+if %choices% == 7 goto exit
 if %choices% == close goto exit
 if %choices% == exit goto exit
 if %choices% == admin cls & goto admin
@@ -169,7 +169,7 @@ cd %directory%
 copy /y "%temp%\install.bat" "install.bat"
 start install.bat
 del /q /f %temp%\install.bat
-goto exit
+goto realexit
 
 
 
@@ -324,4 +324,7 @@ curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install
 cd %directory%
 copy /y "%temp%\install.bat" "install.bat"
 del /q /f %temp%\install.bat
+goto realexit
+
+:realexit
 exit
