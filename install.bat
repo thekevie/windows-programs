@@ -1,5 +1,5 @@
 @echo off
-title Version 1.5.2 - Source Code: github.com/thekevie/school-programs
+title Version 1.5.3 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -181,7 +181,7 @@ echo 4. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 cls & goto admininstaller
 if %choices% == 2 cls & goto admindesktop
-if %choices% == 3 adminstartupdir
+if %choices% == 3 goto adminstartupdir
 if %choices% == 4 cls & goto menu
 if %choices% == back cls & goto menu
 if %choices% == close goto exit
