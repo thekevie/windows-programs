@@ -1,5 +1,5 @@
 @echo off
-title Version 1.5.6 - Source Code: github.com/thekevie/school-programs
+title Version 1.5.7 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -67,8 +67,8 @@ goto install
 
 :installall
 cd %startup%
-del desktop.exe
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
+del desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
 echo Installed All Plugin
 pause
@@ -76,8 +76,8 @@ goto close
 
 :installdesktop
 cd %startup%
-del desktop.exe
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
+del desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
 echo Installed Desktop Plugin
 pause
@@ -101,7 +101,7 @@ goto uninstall
 
 :uninstallall
 cd %startup%
-del desktop.exe
+del desktop.bat
 cls
 echo Uninstalled All Plugin
 pause
@@ -109,7 +109,7 @@ goto close
 
 :uninstalldesktop
 cd %startup%
-del desktop.exe
+del desktop.bat
 cls
 echo Uninstalled Desktop Plugin
 pause
@@ -133,8 +133,8 @@ goto update
 
 :updateall
 cd %startup%
-del desktop.exe
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
+del desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
 echo Updated All Plugin
 pause
@@ -142,8 +142,8 @@ goto close
 
 :updatedesktop
 cd %startup%
-del desktop.exe
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
+del desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
 echo Updated Desktop Plugin
 pause
@@ -255,10 +255,8 @@ goto admindesktop
 
 :admindesktopinstall
 cd %startup%
-attrib -h -s -r "desktop.exe"
-del desktop.exe
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
-attrib +h +s +r "desktop.exe"
+del desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
 echo Installed Desktop Plugin
 echo.
@@ -266,8 +264,7 @@ goto admindesktop
 
 :admindesktopuninstall
 cd %startup%
-attrib -h -s -r "desktop.exe"
-del desktop.exe
+del desktop.bat
 cls
 echo Uninstalled Desktop Plugin
 echo.
@@ -275,10 +272,8 @@ goto admindesktop
 
 :admindesktopupdate
 cd %startup%
-attrib -h -s -r "desktop.exe"
-del desktop.exe
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.exe
-attrib +h +s +r "desktop.exe"
+del desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
 echo Updated Desktop Plugin
 echo.
@@ -286,7 +281,7 @@ goto admindesktop
 
 :admindesktopsuperhide
 cd %startup%
-attrib +h +s +r "desktop.exe"
+attrib +h +s +r "desktop.bat"
 cls
 echo Desktop File Is Now Super-Hidden
 echo.
@@ -294,7 +289,7 @@ goto admindesktop
 
 :admindesktophide
 cd %startup%
-attrib +h -s +r "desktop.exe"
+attrib +h -s +r "desktop.bat"
 cls
 echo Desktop File Is Now Hidden
 echo.
@@ -302,7 +297,7 @@ goto admindesktop
 
 :admindesktopshow
 cd %startup%
-attrib -h -s -r "desktop.exe"
+attrib -h -s -r "desktop.bat"
 cls
 echo Desktop File Is Now Visible
 echo.
