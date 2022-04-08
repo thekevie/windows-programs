@@ -1,5 +1,5 @@
 @echo off
-title Version 1.6.1 - Source Code: github.com/thekevie/school-programs
+title Version 1.6.2 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
@@ -67,11 +67,13 @@ goto Install
 :InstallAll
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-cscript /nologo (
-set WS = WScript.CreateObject("WScript.Shell")
-set link = WS.CreateShortcut("%startup%\desktop.lnk")
-link.TargetPath = "%plugindir%\desktop.bat"
-)
+set code="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
+echo set WS = WScript.CreateObject("WScript.Shell") >> %code%
+echo set link = WS.CreateShortcut("%startup%\desktop.lnk") >> %code%
+echo link.TargetPath = "%plugindir%\desktop.bat" >> %code%
+echo link.Save >> %code%
+cscript /nologo %code%
+del %code%
 pause
 cls
 echo Installed All Plugin
