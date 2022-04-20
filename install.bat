@@ -1,5 +1,5 @@
 @echo off
-title Version 1.7.2 - Source Code: github.com/thekevie/school-programs
+title Version 1.7.3 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
@@ -68,7 +68,7 @@ goto Install
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cd %startup%
-echo START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat > %startup%\startup_desktop.bat
+echo "START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat" > StartupDesktop.bat
 cls
 echo Installed All Plugin
 pause
@@ -101,7 +101,7 @@ if %choices% == exit goto Exit
 goto Uninstall
 
 :UninstallAll
-del /q %startup%\startup_desktop.bat
+del /q %startup%\StartupDesktop.bat
 del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled All Plugin
@@ -109,7 +109,7 @@ pause
 goto close
 
 :UninstallDesktop
-del /q %startup%\startup_desktop.bat
+del /q %startup%\StartupDesktop.bat
 del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled Desktop Plugin
@@ -293,14 +293,14 @@ goto AdminDesktop
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cd %startup%
-echo START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat > %startup%\startup_desktop.bat
+echo START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat > %startup%\StartupDesktop.bat
 cls
 echo Installed Desktop Plugin
 echo.
 goto AdminDesktop
 
 :AdminDesktopUninstall
-del /q %startup%\startup_desktop.bat
+del /q %startup%\StartupDesktop.bat
 del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled Desktop Plugin
@@ -317,7 +317,7 @@ goto AdminDesktop
 
 :AdminDesktopSuperHide
 attrib +h +s +r "%plugindir%\desktop.bat"
-attrib +h +s +r "%startup%\startup_desktop.bat"
+attrib +h +s +r "%startup%\StartupDesktop.bat"
 cls
 echo Desktop File Is Now Super-Hidden
 echo.
@@ -325,7 +325,7 @@ goto AdminDesktop
 
 :AdminDesktopHide
 attrib +h -s +r "%plugindir%\desktop.bat"
-attrib +h -s +r "%startup%\startup_desktop.bat"
+attrib +h -s +r "%startup%\StartupDesktop.bat"
 cls
 echo Desktop File Is Now Hidden
 echo.
@@ -333,7 +333,7 @@ goto AdminDesktop
 
 :AdminDesktopShow
 attrib -h -s -r "%plugindir%\desktop.bat"
-attrib -h -s -r "%startup%\startup_desktop.bat"
+attrib -h -s -r "%startup%\StartupDesktop.bat"
 cls
 echo Desktop File Is Now Visible
 echo.
