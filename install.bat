@@ -1,5 +1,5 @@
 @echo off
-title Version 1.7.3 - Source Code: github.com/thekevie/school-programs
+title Version 1.7.4 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
@@ -78,7 +78,7 @@ goto Close
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cd %startup%
-echo START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat > %startup%\startup_desktop.bat
+echo "START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat" > StartupDesktop.bat
 cls
 echo Installed Desktop Plugin
 pause
@@ -167,19 +167,13 @@ echo 1. Installer
 echo 2. Desktop Plugin
 echo 3. Open Startup Directory
 echo 4. Open Plugin Directory
-echo 5. Run for Scheduled Task
-echo 6. Search for Scheduled Task
-echo 7. Delete for Scheduled Task
-echo 8. Go Back
+echo 5. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 cls & goto AdminInstaller
 if %choices% == 2 cls & goto AdminDesktop
 if %choices% == 3 goto AdminStartupDir
 if %choices% == 4 goto AdminPluginDir
-if %choices% == 5 goto AdminSchtasksRun
-if %choices% == 6 goto AdminSchtasksSearch
-if %choices% == 7 goto AdminSchtasksDelete
-if %choices% == 8 cls & goto Menu
+if %choices% == 5 cls & goto Menu
 if %choices% == back cls & goto Menu
 if %choices% == close goto Exit
 if %choices% == exit goto Exit
@@ -196,33 +190,6 @@ goto Admin
 cd %plugindir%
 start .
 cls
-goto Admin
-
-:AdminSchtasksRun
-cls
-set /p taskname=Task Name: 
-cls
-schtasks /run /tn %taskname%
-echo.
-echo.
-goto Admin
-
-:AdminSchtasksSearch
-cls
-set /p taskname=Task Name: 
-cls
-schtasks /query /tn %taskname%
-echo.
-echo.
-goto Admin
-
-:AdminSchtasksDelete
-cls
-set /p taskname=Task Name: 
-cls
-schtasks /delete /tn %taskname%
-echo.
-echo.
 goto Admin
 
 
@@ -293,7 +260,7 @@ goto AdminDesktop
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cd %startup%
-echo START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat > %startup%\StartupDesktop.bat
+echo "START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat" > StartupDesktop.bat
 cls
 echo Installed Desktop Plugin
 echo.
