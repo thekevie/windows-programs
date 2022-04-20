@@ -1,5 +1,5 @@
 @echo off
-title Version 1.7.7 - Source Code: github.com/thekevie/school-programs
+title Version 1.7.8 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
@@ -101,8 +101,6 @@ if %choices% == exit goto Exit
 goto Uninstall
 
 :UninstallAll
-echo %cd%
-pause
 cd %startup%
 del /q StartupDesktop.bat
 del /q %plugindir%\desktop.bat
@@ -112,7 +110,8 @@ pause
 goto close
 
 :UninstallDesktop
-del /q %startup%\StartupDesktop.bat
+cd %startup%
+del /q StartupDesktop.bat
 del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled Desktop Plugin
@@ -270,7 +269,8 @@ echo.
 goto AdminDesktop
 
 :AdminDesktopUninstall
-del /q %startup%\StartupDesktop.bat
+cd %startup%
+del /q StartupDesktop.bat
 del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled Desktop Plugin
