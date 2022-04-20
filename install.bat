@@ -1,7 +1,7 @@
 @echo off
-title Version 1.7.5 - Source Code: github.com/thekevie/school-programs
+title Version 1.7.6 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
-set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+set startup=%userprofile%AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
 
 :Menu
