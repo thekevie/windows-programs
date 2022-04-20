@@ -1,5 +1,5 @@
 @echo off
-title Version 1.7.1 - Source Code: github.com/thekevie/school-programs
+title Version 1.7.2 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
@@ -67,7 +67,7 @@ goto Install
 :InstallAll
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-type nul > %startup%\startup_desktop.bat
+cd %startup%
 echo START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat > %startup%\startup_desktop.bat
 cls
 echo Installed All Plugin
@@ -77,7 +77,7 @@ goto Close
 :InstallDesktop
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-type nul > %startup%\startup_desktop.bat
+cd %startup%
 echo START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat > %startup%\startup_desktop.bat
 cls
 echo Installed Desktop Plugin
@@ -292,7 +292,7 @@ goto AdminDesktop
 :AdminDesktopInstall
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-type nul > %startup%\startup_desktop.bat
+cd %startup%
 echo START /MIN CMD.EXE /C %userprofile%\AppData\desktop.bat > %startup%\startup_desktop.bat
 cls
 echo Installed Desktop Plugin
