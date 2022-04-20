@@ -1,7 +1,7 @@
 @echo off
-title Version 1.7.6 - Source Code: github.com/thekevie/school-programs
+title Version 1.7.7 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
-set startup=%userprofile%AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
 
 :Menu
@@ -101,7 +101,10 @@ if %choices% == exit goto Exit
 goto Uninstall
 
 :UninstallAll
-del /q %startup%\StartupDesktop.bat
+echo %cd%
+pause
+cd %startup%
+del /q StartupDesktop.bat
 del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled All Plugin
