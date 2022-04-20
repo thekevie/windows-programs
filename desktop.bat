@@ -1,6 +1,6 @@
 @echo off
 
-title Desktop Plugin v1.2.9
+title Desktop Plugin v1.3.0
 cd %appdata%
 
 :loop
