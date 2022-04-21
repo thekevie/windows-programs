@@ -155,7 +155,6 @@ pause
 goto Close
 
 
-
 :Close
 cls
 cd %temp%
@@ -165,7 +164,6 @@ copy /y "%temp%\install.bat" "install.bat"
 start install.bat
 del /q /f %temp%\install.bat
 goto RealExit
-
 
 
 :Admin
