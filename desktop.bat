@@ -1,15 +1,26 @@
 @echo off
 
-title Desktop Plugin v1.3.0
-cd %appdata%
+title Desktop Plugin v1.3.1
+set dir=%appdata%
 
 :loop
-del /q %public%\desktop\www.studi.se.url
-del /q %userprofile%\desktop\www.studi.se.url
+cd %public%\desktop
+IF EXIST www.studi.se.url (
+    del /q www.studi.se.url
+)
+IF EXIST Landguiden.url (
+    del /q Landguiden.url
+)
 
-del /q %public%\desktop\Landguiden.url
-del /q %userprofile%\desktop\Landguiden.url
+cd %userprofile%\desktop
+IF EXIST www.studi.se.url (
+    del /q www.studi.se.url
+)
+IF EXIST Landguiden.url (
+    del /q Landguiden.url
+)
 
+cd %dir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-timeout 300 > nobreak > nul
+timeout 30 > nobreak > nul
 goto loop
