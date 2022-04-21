@@ -1,5 +1,5 @@
 @echo off
-title Version 1.8.3 - Source Code: github.com/thekevie/school-programs
+title Version 1.8.4 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData\plugins
@@ -66,8 +66,10 @@ goto Install
 :InstallAll
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
 cd %startup%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/startdesktop.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/startautotemp.vbs
 cls
 echo Installed All Plugin
 pause
