@@ -1,8 +1,7 @@
 @echo off
-title Version 1.9.0 - Source Code: github.com/thekevie/school-programs
+title Version 1.9.1 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
-set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-set plugindir=%userprofile%\AppData\plugins
+set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
 :Menu
 echo 1. Install Plugins
@@ -65,11 +64,8 @@ goto Install
 
 :InstallAll
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
-cd %startup%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/startdesktop.vbs
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/startautotemp.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
 cls
 echo Installed All Plugin
 pause
@@ -77,9 +73,7 @@ goto Close
 
 :InstallDesktop
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-cd %startup%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/startdesktop.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
 cls
 echo Installed Desktop Plugin
 pause
@@ -87,9 +81,7 @@ goto Close
 
 :InstallAutoTemp
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
-cd %startup%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/startautotemp.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
 cls
 echo Installed AutoTemp Plugin
 pause
@@ -111,29 +103,25 @@ if %choices% == exit goto Exit
 goto Uninstall
 
 :UninstallAll
-cd %startup%
-del /q startdesktop.vbs
-del /q startautotemp.vbs
-del /q %plugindir%\desktop.bat
-del /q %plugindir%\autotemp.bat
+cd %plugindir%
+del /q desktop.vbs
+del /q autotemp.vbs
 cls
 echo Uninstalled All Plugin
 pause
 goto close
 
 :UninstallDesktop
-cd %startup%
-del /q startdesktop.vbs
-del /q %plugindir%\desktop.bat
+cd %plugindir%
+del /q desktop.vbs
 cls
 echo Uninstalled Desktop Plugin
 pause
 goto Close
 
 :UninstallAutoTemp
-cd %startup%
-del /q startautotemp.vbs
-del /q %plugindir%\autotemp.bat
+cd %plugindir%
+del /q autotemp.vbs
 cls
 echo Uninstalled AutoTemp Plugin
 pause
@@ -156,8 +144,8 @@ goto Update
 
 :UpdateAll
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
 cls
 echo Updated All Plugin
 pause
@@ -165,7 +153,7 @@ goto Close
 
 :UpdateDesktop
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
 cls
 echo Updated Desktop Plugin
 pause
@@ -173,7 +161,7 @@ goto Close
 
 :UpdateAutoTemp
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
 cls
 echo Updated AutoTemp Plugin
 pause
@@ -195,27 +183,19 @@ goto RealExit
 echo 1. Installer
 echo 2. Desktop Plugin
 echo 3. AutoTemp Plugin
-echo 4. Open Startup Directory
-echo 5. Open Plugin Directory
-echo 6. Go Back
+echo 4. Open Plugin Directory
+echo 5. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 cls & goto AdminInstaller
 if %choices% == 2 cls & goto AdminDesktop
 if %choices% == 3 cls & goto AdminAutoTemp
-if %choices% == 4 goto AdminStartupDir
-if %choices% == 5 goto AdminPluginDir
-if %choices% == 6 cls & goto Menu
+if %choices% == 4 goto AdminPluginDir
+if %choices% == 5 cls & goto Menu
 if %choices% == back cls & goto Menu
 if %choices% == close goto Exit
 if %choices% == exit goto Exit
 cls
 goto admin
-
-:AdminStartupDir
-cd %startup%
-start .
-cls
-goto Admin
 
 :AdminPluginDir
 cd %plugindir%
@@ -288,18 +268,15 @@ goto AdminDesktop
 
 :AdminDesktopInstall
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
-cd %startup%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/startdesktop.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
 cls
 echo Installed Desktop Plugin
 echo.
 goto AdminDesktop
 
 :AdminDesktopUninstall
-cd %startup%
-del /q startdesktop.vbs
-del /q %plugindir%\desktop.bat
+cd %plugindir%
+del /q desktop.vbs
 cls
 echo Uninstalled Desktop Plugin
 echo.
@@ -307,31 +284,28 @@ goto AdminDesktop
 
 :AdminDesktopUpdate
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
 cls
 echo Updated Desktop Plugin
 echo.
 goto AdminDesktop
 
 :AdminDesktopSuperHide
-attrib +h +s +r "%plugindir%\desktop.bat"
-attrib +h +s +r "%startup%\startdesktop.vbs"
+attrib +h +s +r "%plugindir%\desktop.vbs"
 cls
 echo Desktop File Is Now Super-Hidden
 echo.
 goto AdminDesktop
 
 :AdminDesktopHide
-attrib +h -s +r "%plugindir%\desktop.bat"
-attrib +h -s +r "%startup%\startdesktop.vbs"
+attrib +h -s +r "%plugindir%\desktop.vbs"
 cls
 echo Desktop File Is Now Hidden
 echo.
 goto AdminDesktop
 
 :AdminDesktopShow
-attrib -h -s -r "%plugindir%\desktop.bat"
-attrib -h -s -r "%startup%\startdesktop.vbs"
+attrib -h -s -r "%plugindir%\desktop.vbs"
 cls
 echo Desktop File Is Now Visible
 echo.
@@ -362,18 +336,15 @@ goto AdminAutoTemp
 
 :AdminAutoTempInstall
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
-cd %startup%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/startautotemp.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
 cls
 echo Installed AutoTemp Plugin
 echo.
 goto AdminAutoTemp
 
 :AdminAutoTempUninstall
-cd %startup%
-del /q startautotemp.vbs
-del /q %plugindir%\autotemp.bat
+cd %plugindir%
+del /q autotemp.vbs
 cls
 echo Uninstalled AutoTemp Plugin
 echo.
@@ -381,31 +352,28 @@ goto AdminAutoTemp
 
 :AdminAutoTempUpdate
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
 cls
 echo Updated AutoTemp Plugin
 echo.
 goto AdminAutoTemp
 
 :AdminAutoTempSuperHide
-attrib +h +s +r "%plugindir%\desktop.bat"
-attrib +h +s +r "%startup%\startdesktop.vbs"
+attrib +h +s +r "%plugindir%\desktop.vbs"
 cls
 echo Desktop File Is Now Super-Hidden
 echo.
 goto AdminAutoTemp
 
 :AdminAutoTempHide
-attrib +h -s +r "%plugindir%\autotemp.bat"
-attrib +h -s +r "%startup%\startautotemp.vbs"
+attrib +h -s +r "%plugindir%\autotemp.vbs"
 cls
 echo AutoTemp File Is Now Hidden
 echo.
 goto AdminAutoTemp
 
 :AdminAutoTempShow
-attrib -h -s -r "%plugindir%\autotemp.bat"
-attrib -h -s -r "%startup%\startautotemp.vbs"
+attrib -h -s -r "%plugindir%\autotemp.vbs"
 cls
 echo AutoTemp File Is Now Visible
 echo.
