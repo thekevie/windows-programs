@@ -1,5 +1,5 @@
 @echo off
-title Version 2.0.0 - Source Code: github.com/thekevie/school-programs
+title Version 2.0.1 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -164,7 +164,7 @@ echo 1. Update Installer
 echo 2. Open Plugin Directory
 echo 3. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 cls & goto Close
+if %choices% == 1 goto UpdateInstaller
 if %choices% == 2 goto AdminPluginDir
 if %choices% == 3 cls & goto Menu
 if %choices% == back cls & goto Menu
@@ -179,7 +179,6 @@ goto Admin
 
 
 :UpdateInstaller
-cls
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
 cd %directory%
