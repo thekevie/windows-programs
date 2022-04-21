@@ -14,4 +14,5 @@ do while True
   if FSystem.FileExists("%userprofile%\desktop\www.studi.se.url") then
     FSystem.DeleteFile("%userprofile%\desktop\www.studi.se.url")
   end if
+  WScript.Sleep 30
 loop
