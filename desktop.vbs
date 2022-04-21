@@ -1,6 +1,6 @@
-set FSystem = CreateObject("Scripting.FileSystemObjec")
+set FSystem = CreateObject("Scripting.FileSystemObject")
 
-do while
+do while True
   if FSystem.FileExists("%public%\desktop\Landguiden.url") then
     FSystem.DeleteFile("%public%\desktop\Landguiden.url")
   end if
