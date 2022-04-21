@@ -1,5 +1,5 @@
 @echo off
-title Version 1.8.9 - Source Code: github.com/thekevie/school-programs
+title Version 1.9.0 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData\plugins
@@ -85,6 +85,16 @@ echo Installed Desktop Plugin
 pause
 goto Close
 
+:InstallAutoTemp
+cd %plugindir%
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
+cd %startup%
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/startautotemp.vbs
+cls
+echo Installed AutoTemp Plugin
+pause
+goto Close
+
 
 :Uninstall
 cls
@@ -120,6 +130,15 @@ echo Uninstalled Desktop Plugin
 pause
 goto Close
 
+:UninstallAutoTemp
+cd %startup%
+del /q startautotemp.vbs
+del /q %plugindir%\autotemp.bat
+cls
+echo Uninstalled AutoTemp Plugin
+pause
+goto Close
+
 
 :Update
 cls
@@ -149,6 +168,14 @@ cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cls
 echo Updated Desktop Plugin
+pause
+goto Close
+
+:UpdateAutoTemp
+cd %plugindir%
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
+cls
+echo Updated AutoTemp Plugin
 pause
 goto Close
 
