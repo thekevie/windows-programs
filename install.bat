@@ -1,5 +1,5 @@
 @echo off
-title Version 1.9.1 - Source Code: github.com/thekevie/school-programs
+title Version 1.9.2 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -181,16 +181,12 @@ goto RealExit
 
 :Admin
 echo 1. Installer
-echo 2. Desktop Plugin
-echo 3. AutoTemp Plugin
-echo 4. Open Plugin Directory
-echo 5. Go Back
+echo 2. Open Plugin Directory
+echo 3. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 cls & goto AdminInstaller
-if %choices% == 2 cls & goto AdminDesktop
-if %choices% == 3 cls & goto AdminAutoTemp
-if %choices% == 4 goto AdminPluginDir
-if %choices% == 5 cls & goto Menu
+if %choices% == 2 goto AdminPluginDir
+if %choices% == 3 cls & goto Menu
 if %choices% == back cls & goto Menu
 if %choices% == close goto Exit
 if %choices% == exit goto Exit
@@ -242,142 +238,6 @@ cls
 echo Installation File Is Now Visible
 echo.
 goto AdminInstaller
-
-
-:AdminDesktop
-echo 1. Install Desktop Plugin
-echo 2. Uninstall Desktop Plugin
-echo 3. Update Desktop Plugin
-echo 4. Super-Hide Desktop File
-echo 5. Hide Desktop File
-echo 6. Show Desktop File
-echo 7. Go Back
-set /p choices=Type the number: 
-if %choices% == 1 goto AdminDesktopInstall
-if %choices% == 2 goto AdminDesktopUninstall
-if %choices% == 3 goto AdminDesktopUpdate
-if %choices% == 4 goto AdminDesktopSuperHide
-if %choices% == 5 goto AdminDesktopHide
-if %choices% == 6 goto AdminDesktopShow
-if %choices% == 7 cls & goto Admin
-if %choices% == back cls & goto Admin
-if %choices% == close goto Exit
-if %choices% == exit goto Exit
-cls
-goto AdminDesktop
-
-:AdminDesktopInstall
-cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
-cls
-echo Installed Desktop Plugin
-echo.
-goto AdminDesktop
-
-:AdminDesktopUninstall
-cd %plugindir%
-del /q desktop.vbs
-cls
-echo Uninstalled Desktop Plugin
-echo.
-goto AdminDesktop
-
-:AdminDesktopUpdate
-cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
-cls
-echo Updated Desktop Plugin
-echo.
-goto AdminDesktop
-
-:AdminDesktopSuperHide
-attrib +h +s +r "%plugindir%\desktop.vbs"
-cls
-echo Desktop File Is Now Super-Hidden
-echo.
-goto AdminDesktop
-
-:AdminDesktopHide
-attrib +h -s +r "%plugindir%\desktop.vbs"
-cls
-echo Desktop File Is Now Hidden
-echo.
-goto AdminDesktop
-
-:AdminDesktopShow
-attrib -h -s -r "%plugindir%\desktop.vbs"
-cls
-echo Desktop File Is Now Visible
-echo.
-goto AdminDesktop
-
-
-:AdminAutoTemp
-echo 1. Install AutoTemp Plugin
-echo 2. Uninstall AutoTemp Plugin
-echo 3. Update AutoTemp Plugin
-echo 4. Super-Hide AutoTemp File
-echo 5. Hide AutoTemp File
-echo 6. Show AutoTemp File
-echo 7. Go Back
-set /p choices=Type the number: 
-if %choices% == 1 goto AdminAutoTempInstall
-if %choices% == 2 goto AdminAutoTempUninstall
-if %choices% == 3 goto AdminAutoTempUpdate
-if %choices% == 4 goto AdminAutoTempSuperHide
-if %choices% == 5 goto AdminAutoTempHide
-if %choices% == 6 goto AdminAutoTempShow
-if %choices% == 7 cls & goto Admin
-if %choices% == back cls & goto Admin
-if %choices% == close goto Exit
-if %choices% == exit goto Exit
-cls
-goto AdminAutoTemp
-
-:AdminAutoTempInstall
-cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
-cls
-echo Installed AutoTemp Plugin
-echo.
-goto AdminAutoTemp
-
-:AdminAutoTempUninstall
-cd %plugindir%
-del /q autotemp.vbs
-cls
-echo Uninstalled AutoTemp Plugin
-echo.
-goto AdminAutoTemp
-
-:AdminAutoTempUpdate
-cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
-cls
-echo Updated AutoTemp Plugin
-echo.
-goto AdminAutoTemp
-
-:AdminAutoTempSuperHide
-attrib +h +s +r "%plugindir%\desktop.vbs"
-cls
-echo Desktop File Is Now Super-Hidden
-echo.
-goto AdminAutoTemp
-
-:AdminAutoTempHide
-attrib +h -s +r "%plugindir%\autotemp.vbs"
-cls
-echo AutoTemp File Is Now Hidden
-echo.
-goto AdminAutoTemp
-
-:AdminAutoTempShow
-attrib -h -s -r "%plugindir%\autotemp.vbs"
-cls
-echo AutoTemp File Is Now Visible
-echo.
-goto AdminAutoTemp
 
 
 :Exit
