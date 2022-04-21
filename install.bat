@@ -1,5 +1,5 @@
 @echo off
-title Version 1.8.6 - Source Code: github.com/thekevie/school-programs
+title Version 1.8.9 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData\plugins
@@ -309,6 +309,80 @@ cls
 echo Desktop File Is Now Visible
 echo.
 goto AdminDesktop
+
+
+:AdminAutoTemp
+echo 1. Install AutoTemp Plugin
+echo 2. Uninstall AutoTemp Plugin
+echo 3. Update AutoTemp Plugin
+echo 4. Super-Hide AutoTemp File
+echo 5. Hide AutoTemp File
+echo 6. Show AutoTemp File
+echo 7. Go Back
+set /p choices=Type the number: 
+if %choices% == 1 goto AdminAutoTempInstall
+if %choices% == 2 goto AdminAutoTempUninstall
+if %choices% == 3 goto AdminAutoTempUpdate
+if %choices% == 4 goto AdminAutoTempSuperHide
+if %choices% == 5 goto AdminAutoTempHide
+if %choices% == 6 goto AdminAutoTempShow
+if %choices% == 7 cls & goto Admin
+if %choices% == back cls & goto Admin
+if %choices% == close goto Exit
+if %choices% == exit goto Exit
+cls
+goto AdminAutoTemp
+
+:AdminAutoTempInstall
+cd %plugindir%
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
+cd %startup%
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/startautotemp.vbs
+cls
+echo Installed AutoTemp Plugin
+echo.
+goto AdminAutoTemp
+
+:AdminAutoTempUninstall
+cd %startup%
+del /q startautotemp.vbs
+del /q %plugindir%\autotemp.bat
+cls
+echo Uninstalled AutoTemp Plugin
+echo.
+goto AdminAutoTemp
+
+:AdminAutoTempUpdate
+cd %plugindir%
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.bat
+cls
+echo Updated AutoTemp Plugin
+echo.
+goto AdminAutoTemp
+
+:AdminAutoTempSuperHide
+attrib +h +s +r "%plugindir%\desktop.bat"
+attrib +h +s +r "%startup%\startdesktop.vbs"
+cls
+echo Desktop File Is Now Super-Hidden
+echo.
+goto AdminAutoTemp
+
+:AdminAutoTempHide
+attrib +h -s +r "%plugindir%\autotemp.bat"
+attrib +h -s +r "%startup%\startautotemp.vbs"
+cls
+echo AutoTemp File Is Now Hidden
+echo.
+goto AdminAutoTemp
+
+:AdminAutoTempShow
+attrib -h -s -r "%plugindir%\autotemp.bat"
+attrib -h -s -r "%startup%\startautotemp.vbs"
+cls
+echo AutoTemp File Is Now Visible
+echo.
+goto AdminAutoTemp
 
 
 :Exit
