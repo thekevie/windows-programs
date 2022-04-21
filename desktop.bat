@@ -1,7 +1,7 @@
 @echo off
 
-title Desktop Plugin v1.3.1
-set dir=%appdata%
+title Desktop Plugin v1.3.2
+set dir=%appdata%\plugins
 
 :loop
 cd %public%\desktop
