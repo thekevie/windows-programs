@@ -1,5 +1,5 @@
 @echo off
-title Version 1.7.9 - Source Code: github.com/thekevie/school-programs
+title Version 1.8.0 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData
@@ -68,7 +68,9 @@ goto Install
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cd %startup%
-echo START /B CMD.EXE /C %userprofile%\AppData\desktop.bat > StartupDesktop.bat
+echo Set WshShell = CreateObject("WScript.Shell") > StartDesktop.vbs
+echo WshShell.Run chr(34) & "%userprofile%\AppData\desktop.bat" & Chr(34), 0 > StartDesktop.vbs
+echo Set WshShell = Nothing > StartDesktop.vbs
 cls
 echo Installed All Plugin
 pause
@@ -78,7 +80,9 @@ goto Close
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cd %startup%
-echo START /B CMD.EXE /C %userprofile%\AppData\desktop.bat > StartupDesktop.bat
+echo Set WshShell = CreateObject("WScript.Shell") > StartDesktop.vbs
+echo WshShell.Run chr(34) & "%userprofile%\AppData\desktop.bat" & Chr(34), 0 > StartDesktop.vbs
+echo Set WshShell = Nothing > StartDesktop.vbs
 cls
 echo Installed Desktop Plugin
 pause
@@ -102,7 +106,7 @@ goto Uninstall
 
 :UninstallAll
 cd %startup%
-del /q StartupDesktop.bat
+del /q StartDesktop.vbs
 del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled All Plugin
@@ -111,7 +115,7 @@ goto close
 
 :UninstallDesktop
 cd %startup%
-del /q StartupDesktop.bat
+del /q StartDesktop.vbs
 del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled Desktop Plugin
@@ -262,7 +266,9 @@ goto AdminDesktop
 cd %plugindir%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.bat
 cd %startup%
-echo START /B CMD.EXE /C %userprofile%\AppData\desktop.bat > StartupDesktop.bat
+echo Set WshShell = CreateObject("WScript.Shell") > StartDesktop.vbs
+echo WshShell.Run chr(34) & "%userprofile%\AppData\desktop.bat" & Chr(34), 0 > StartDesktop.vbs
+echo Set WshShell = Nothing > StartDesktop.vbs
 cls
 echo Installed Desktop Plugin
 echo.
@@ -270,7 +276,7 @@ goto AdminDesktop
 
 :AdminDesktopUninstall
 cd %startup%
-del /q StartupDesktop.bat
+del /q StartDesktop.vbs
 del /q %plugindir%\desktop.bat
 cls
 echo Uninstalled Desktop Plugin
@@ -287,7 +293,7 @@ goto AdminDesktop
 
 :AdminDesktopSuperHide
 attrib +h +s +r "%plugindir%\desktop.bat"
-attrib +h +s +r "%startup%\StartupDesktop.bat"
+attrib +h +s +r "%startup%\StartDesktop.vbs"
 cls
 echo Desktop File Is Now Super-Hidden
 echo.
@@ -295,7 +301,7 @@ goto AdminDesktop
 
 :AdminDesktopHide
 attrib +h -s +r "%plugindir%\desktop.bat"
-attrib +h -s +r "%startup%\StartupDesktop.bat"
+attrib +h -s +r "%startup%\StartDesktop.vbs"
 cls
 echo Desktop File Is Now Hidden
 echo.
@@ -303,7 +309,7 @@ goto AdminDesktop
 
 :AdminDesktopShow
 attrib -h -s -r "%plugindir%\desktop.bat"
-attrib -h -s -r "%startup%\StartupDesktop.bat"
+attrib -h -s -r "%startup%\StartDesktop.vbs"
 cls
 echo Desktop File Is Now Visible
 echo.
