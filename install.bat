@@ -1,5 +1,5 @@
 @echo off
-title Version 1.9.8 - Source Code: github.com/thekevie/school-programs
+title Version 1.9.9 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -30,7 +30,7 @@ if not %choices% == CONFIRM (
     goto Menu 
     ) else (
     move "%directory%\install.bat" "%userprofile%\documents"
-    goto RealExit
+    goto Exit
 )
 goto Menu
 
@@ -57,7 +57,7 @@ curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotem
 cls
 echo Installed All Plugin
 pause
-goto Update
+goto UpdateInstaller
 
 :InstallDesktop
 cd %plugindir%
@@ -65,7 +65,7 @@ curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop
 cls
 echo Installed Desktop Plugin
 pause
-goto Update
+goto UpdateInstaller
 
 :InstallAutoTemp
 cd %plugindir%
@@ -73,7 +73,7 @@ curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotem
 cls
 echo Installed AutoTemp Plugin
 pause
-goto Update
+goto UpdateInstaller
 
 
 :Uninstall
@@ -98,7 +98,7 @@ del /q autotemp.vbs
 cls
 echo Uninstalled All Plugin
 pause
-goto Update
+goto UpdateInstaller
 
 :UninstallDesktop
 cd %plugindir%
@@ -106,7 +106,7 @@ del /q desktop.vbs
 cls
 echo Uninstalled Desktop Plugin
 pause
-goto Update
+goto UpdateInstaller
 
 :UninstallAutoTemp
 cd %plugindir%
@@ -114,7 +114,7 @@ del /q autotemp.vbs
 cls
 echo Uninstalled AutoTemp Plugin
 pause
-goto Update
+goto UpdateInstaller
 
 
 :Update
@@ -139,7 +139,7 @@ curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotem
 cls
 echo Updated All Plugin
 pause
-goto Update
+goto UpdateInstaller
 
 :UpdateDesktop
 cd %plugindir%
@@ -147,7 +147,7 @@ curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop
 cls
 echo Updated Desktop Plugin
 pause
-goto Update
+goto UpdateInstaller
 
 :UpdateAutoTemp
 cd %plugindir%
@@ -155,7 +155,7 @@ curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotem
 cls
 echo Updated AutoTemp Plugin
 pause
-goto Update
+goto UpdateInstaller
 
 
 :Admin
@@ -177,7 +177,7 @@ cls
 goto Admin
 
 
-:Update
+:UpdateInstaller
 cls
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
