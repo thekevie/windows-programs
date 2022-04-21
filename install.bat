@@ -1,5 +1,5 @@
 @echo off
-title Version 1.9.6 - Source Code: github.com/thekevie/school-programs
+title Version 1.9.7 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -7,25 +7,15 @@ set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Program
 echo 1. Install Plugins
 echo 2. Uninstall Plugins
 echo 3. Update Plugins
-echo 4. Information
-echo 5. Done Installing
+echo 4. Done Installing
 set /p choices=Type the number: 
 if %choices% == 1 goto Install
 if %choices% == 2 goto Uninstall
 if %choices% == 3 goto Update
-if %choices% == 4 goto Info
-if %choices% == 5 goto Done
+if %choices% == 4 goto Done
 if %choices% == ("close", "exit") goto Exit
 if %choices% == admin cls & goto Admin
 cls
-goto Menu
-
-:Info
-cls
-echo When you are done installing the plugins
-echo just click the hide option and the next time
-echo you restart you computer the file will be hidden
-echo.
 goto Menu
 
 :Done
@@ -198,11 +188,8 @@ del /q /f %temp%\install.bat
 goto RealExit
 
 :Exit
-cd %temp%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
 cd %directory%
-copy /y "%temp%\install.bat" "install.bat"
-del /q /f %temp%\install.bat
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
 goto RealExit
 
 :RealExit
