@@ -1,5 +1,5 @@
 @echo off
-title Version 1.9.2 - Source Code: github.com/thekevie/school-programs
+title Version 1.9.3 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -19,8 +19,7 @@ if %choices% == 4 goto Info
 if %choices% == 5 goto Hide
 if %choices% == 6 goto Show
 if %choices% == 7 goto Exit
-if %choices% == close goto Exit
-if %choices% == exit goto Exit
+if %choices% == ("close", "exit") goto Exit
 if %choices% == admin cls & goto Admin
 cls
 goto Menu
@@ -58,8 +57,7 @@ if %choices% == 1 goto InstallAll
 if %choices% == 2 goto InstallDesktop
 if %choices% == 3 cls & goto Menu
 if %choices% == back cls & goto Menu
-if %choices% == close goto Exit
-if %choices% == exit goto Exit
+if %choices% == ("close", "exit") goto Exit
 goto Install
 
 :InstallAll
@@ -98,8 +96,7 @@ if %choices% == 1 goto UninstallAll
 if %choices% == 2 goto UninstallDesktop
 if %choices% == 3 cls & goto Menu
 if %choices% == back cls & goto Menu
-if %choices% == close goto Exit
-if %choices% == exit goto Exit
+if %choices% == ("close", "exit") goto Exit
 goto Uninstall
 
 :UninstallAll
@@ -138,8 +135,7 @@ if %choices% == 1 goto UpdateAll
 if %choices% == 2 goto UpdateDesktop
 if %choices% == 3 cls & goto Menu
 if %choices% == back cls & goto Menu
-if %choices% == close goto Exit
-if %choices% == exit goto Exit
+if %choices% == ("close", "exit") goto Exit
 goto Update
 
 :UpdateAll
@@ -188,8 +184,6 @@ if %choices% == 1 cls & goto AdminInstaller
 if %choices% == 2 goto AdminPluginDir
 if %choices% == 3 cls & goto Menu
 if %choices% == back cls & goto Menu
-if %choices% == close goto Exit
-if %choices% == exit goto Exit
 cls
 goto admin
 
@@ -213,8 +207,6 @@ if %choices% == 3 goto AdminInstallerHide
 if %choices% == 4 goto AdminInstallerShow
 if %choices% == 5 cls & goto Admin
 if %choices% == back cls & goto Admin
-if %choices% == close goto Exit
-if %choices% == exit goto Exit
 cls
 goto AdminInstaller
 
