@@ -1,5 +1,5 @@
 @echo off
-title Version 1.9.9 - Source Code: github.com/thekevie/school-programs
+title Version 2.0.0 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -12,7 +12,7 @@ set /p choices=Type the number:
 if %choices% == 1 goto Install
 if %choices% == 2 goto Uninstall
 if %choices% == 3 goto Update
-if %choices% == 4 goto Done
+if %choices% == 4 cls & goto Done
 if %choices% == ("close", "exit") goto Exit
 if %choices% == admin cls & goto Admin
 cls
@@ -27,6 +27,7 @@ set /p choices=Type CONFIRM exactly like that to continue:
 if not %choices% == CONFIRM (
     cls 
     echo You didnt type it in the right way 
+    echo.
     goto Menu 
     ) else (
     move "%directory%\install.bat" "%userprofile%\documents"
