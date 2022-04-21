@@ -1,5 +1,5 @@
 @echo off
-title Version 1.9.4 - Source Code: github.com/thekevie/school-programs
+title Version 1.9.5 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -161,23 +161,12 @@ pause
 goto Close
 
 
-:Close
-cls
-cd %temp%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
-cd %directory%
-copy /y "%temp%\install.bat" "install.bat"
-start install.bat
-del /q /f %temp%\install.bat
-goto RealExit
-
-
 :Admin
-echo 1. Installer
+echo 1. Update Installer
 echo 2. Open Plugin Directory
 echo 3. Go Back
 set /p choices=Type the number: 
-if %choices% == 1 cls & goto AdminInstaller
+if %choices% == 1 cls & goto Close
 if %choices% == 2 goto AdminPluginDir
 if %choices% == 3 cls & goto Menu
 if %choices% == back cls & goto Menu
@@ -191,43 +180,15 @@ cls
 goto Admin
 
 
-:AdminInstaller
-echo 1. Update Installer
-echo 2. Super-Hide Installer
-echo 3. Hide Installer
-echo 4. Show Installer
-echo 5. Go Back
-set /p choices=Type the number: 
-if %choices% == 1 goto close
-if %choices% == 2 goto AdminInstallerSuperHide
-if %choices% == 3 goto AdminInstallerHide
-if %choices% == 4 goto AdminInstallerShow
-if %choices% == 5 cls & goto Admin
-if %choices% == back cls & goto Admin
+:Close
 cls
-goto AdminInstaller
-
-:AdminInstallerSuperHide
-attrib +h +s +r "%directory%\install.bat"
-cls
-echo Installation File Is Now Super-Hidden
-echo.
-goto AdminInstaller
-
-:AdminInstallerHide
-attrib +h -s +r "%directory%\install.bat"
-cls
-echo Installation File Is Now Hidden
-echo.
-goto AdminInstaller
-
-:AdminInstallerShow
-attrib -h -s -r "%directory%\install.bat"
-cls
-echo Installation File Is Now Visible
-echo.
-goto AdminInstaller
-
+cd %temp%
+curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
+cd %directory%
+copy /y "%temp%\install.bat" "install.bat"
+start install.bat
+del /q /f %temp%\install.bat
+goto RealExit
 
 :Exit
 cd %temp%
