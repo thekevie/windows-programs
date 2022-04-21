@@ -1,5 +1,5 @@
 @echo off
-title Version 1.9.5 - Source Code: github.com/thekevie/school-programs
+title Version 1.9.6 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -8,15 +8,13 @@ echo 1. Install Plugins
 echo 2. Uninstall Plugins
 echo 3. Update Plugins
 echo 4. Information
-echo 5. Hide Installer
-echo 6. Exit
+echo 5. Done Installing
 set /p choices=Type the number: 
 if %choices% == 1 goto Install
 if %choices% == 2 goto Uninstall
 if %choices% == 3 goto Update
 if %choices% == 4 goto Info
-if %choices% == 5 goto Hide
-if %choices% == 6 goto Exit
+if %choices% == 5 goto Done
 if %choices% == ("close", "exit") goto Exit
 if %choices% == admin cls & goto Admin
 cls
@@ -30,11 +28,20 @@ echo you restart you computer the file will be hidden
 echo.
 goto Menu
 
-:Hide
-attrib +h -s -r "%directory%\install.bat"
-cls
-echo Installation File Is Now Hidden
+:Done
+echo The Installer file will soon be moved to the Documents Folder.
+echo If you want to install, uninstall or update any plugins you can
+echo just run the installer file again and select the options you want.
 echo.
+set /p choices=Type CONFIRM exactly like that to continue: 
+if not %choices% == CONFIRM (
+    cls 
+    echo You didnt type it in the right way 
+    goto Menu 
+    ) else (
+    move "%directory%\install.bat" "%userprofile%\documents"
+    goto RealExit
+)
 goto Menu
 
 
