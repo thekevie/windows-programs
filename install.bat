@@ -1,5 +1,5 @@
 @echo off
-title Version 1.8.5 - Source Code: github.com/thekevie/school-programs
+title Version 1.8.6 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 set plugindir=%userprofile%\AppData\plugins
@@ -167,15 +167,17 @@ goto RealExit
 :Admin
 echo 1. Installer
 echo 2. Desktop Plugin
-echo 3. Open Startup Directory
-echo 4. Open Plugin Directory
-echo 5. Go Back
+echo 3. AutoTemp Plugin
+echo 4. Open Startup Directory
+echo 5. Open Plugin Directory
+echo 6. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 cls & goto AdminInstaller
 if %choices% == 2 cls & goto AdminDesktop
-if %choices% == 3 goto AdminStartupDir
-if %choices% == 4 goto AdminPluginDir
-if %choices% == 5 cls & goto Menu
+if %choices% == 3 cls & goto AdminAutoTemp
+if %choices% == 4 goto AdminStartupDir
+if %choices% == 5 goto AdminPluginDir
+if %choices% == 6 cls & goto Menu
 if %choices% == back cls & goto Menu
 if %choices% == close goto Exit
 if %choices% == exit goto Exit
