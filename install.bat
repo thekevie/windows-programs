@@ -1,8 +1,8 @@
 @echo off
-title Version 1.8.2 - Source Code: github.com/thekevie/school-programs
+title Version 1.8.3 - Source Code: github.com/thekevie/school-programs
 set directory=%CD%
 set startup=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-set plugindir=%userprofile%\AppData
+set plugindir=%userprofile%\AppData\plugins
 
 :Menu
 echo 1. Install Plugins
