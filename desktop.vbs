@@ -16,7 +16,7 @@ do while True
     end if
   next
 
-  wscript.sleep 100
+  wscript.sleep 1000
   
   for each file in privatedir.files
     if file.name = "Landguiden.url" then 
