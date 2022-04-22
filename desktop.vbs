@@ -24,5 +24,5 @@ do while True
     end if
   next
 
-  wscript.sleep 60000
+  wscript.sleep 120000
 loop
