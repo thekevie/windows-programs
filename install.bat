@@ -1,5 +1,5 @@
 @echo off
-title Version 2.1.0 - Source Code: github.com/thekevie/windows-programs
+title Version 2.1.1 - Source Code: github.com/thekevie/windows-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -47,7 +47,7 @@ echo 3. Install AutoTemp Plugin
 echo 4. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto InstallAll
-if %choices% == 2 goto InstallDesktop
+if %choices% == 2 goto InstallAutoDesktop
 if %choices% == 3 goto InstallAutoTemp
 if %choices% == 4 cls & goto Menu
 if %choices% == exit goto Close
@@ -55,31 +55,31 @@ goto Install
 
 :InstallAll
 cd %plugindir%
-if exist desktop.vbs (
-    set desktopresponse=Desktop Plugin is already Installed
+if exist autodesktop.vbs (
+    set autodesktopresponse=AutoDesktop Plugin is already Installed
 ) else ( 
-    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
-    set desktopresponse=Desktop Plugin was Installed
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autodesktop.vbs
+    set autodesktopresponse=AutoDesktop Plugin was Installed
 )
 if exist autotemp.vbs (
     set autotempresponse=AutoTemp Plugin is already Installed
 ) else ( 
     curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
-    set autotempresponse=Desktop Plugin was Installed
+    set autotempresponse=AutoTemp Plugin was Installed
 )
 cls
-echo %desktopresponse%
+echo %autodesktopresponse%
 echo %autotempresponse%
 pause
 goto UpdateInstaller
 
-:InstallDesktop
+:InstallAutoDesktop
 cd %plugindir%
-if exist desktop.vbs (
-    set desktopresponse=Desktop Plugin is already Installed
+if exist autodesktop.vbs (
+    set desktopresponse=AutoDesktop Plugin is already Installed
 ) else ( 
-    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
-    set desktopresponse=Desktop Plugin was Installed
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autodesktop.vbs
+    set desktopresponse=AutoDesktop Plugin was Installed
 )
 cls
 echo %desktopresponse%
@@ -92,7 +92,7 @@ if exist autotemp.vbs (
     set autotempresponse=AutoTemp Plugin is already Installed
 ) else ( 
     curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
-    set autotempresponse=Desktop Plugin was Installed
+    set autotempresponse=AutoTemp Plugin was Installed
 )
 cls
 echo %autotempresponse%
@@ -103,12 +103,12 @@ goto UpdateInstaller
 :Uninstall
 cls
 echo 1. Uninstall All Plugins
-echo 2. Uninstall Desktop Plugin
+echo 2. Uninstall AutoDesktop Plugin
 echo 3. Uninstall AutoTemp Plugin
 echo 4. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto UninstallAll
-if %choices% == 2 goto UninstallDesktop
+if %choices% == 2 goto UninstallAutoDesktop
 if %choices% == 3 goto UninstallAutoTemp
 if %choices% == 4 cls & goto Menu
 if %choices% == exit goto Close
@@ -116,11 +116,11 @@ goto Uninstall
 
 :UninstallAll
 cd %plugindir%
-if exist desktop.vbs (
-    del /q desktop.vbs
-    set desktopresponse=Desktop Plugin was Uninstalled
+if exist autodesktop.vbs (
+    del /q autodesktop.vbs
+    set autodesktopresponse=AutoDesktop Plugin was Uninstalled
 ) else ( 
-    set desktopresponse=Desktop Plugin is not Installed
+    set autodesktopresponse=AutoDesktop Plugin is not Installed
 )
 if exist autotemp.vbs (
     del /q autotemp.vbs
@@ -129,21 +129,21 @@ if exist autotemp.vbs (
     set autotempresponse=AutoTemp Plugin is not Installed
 )
 cls
-echo %desktopresponse%
+echo %autodesktopresponse%
 echo %autotempresponse%
 pause
 goto UpdateInstaller
 
-:UninstallDesktop
+:UninstallAutoDesktop
 cd %plugindir%
-if exist desktop.vbs (
-    del /q desktop.vbs
-    set desktopresponse=Desktop Plugin was Uninstalled
+if exist autodesktop.vbs (
+    del /q autodesktop.vbs
+    set autodesktopresponse=AutoDesktop Plugin was Uninstalled
 ) else ( 
-    set desktopresponse=Desktop Plugin is not Installed
+    set autodesktopresponse=AutoDesktop Plugin is not Installed
 )
 cls
-echo %desktopresponse%
+echo %autodesktopresponse%
 pause
 goto UpdateInstaller
 
@@ -164,12 +164,12 @@ goto UpdateInstaller
 :Update
 cls
 echo 1. Update All Plugins
-echo 2. Update Desktop Plugin
+echo 2. Update AutoDesktop Plugin
 echo 3. Update AutoTemp Plugin
 echo 4. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto UpdateAll
-if %choices% == 2 goto UpdateDesktop
+if %choices% == 2 goto UpdateAutoDesktop
 if %choices% == 3 goto UpdateAutoTemp
 if %choices% == 4 cls & goto Menu
 if %choices% == exit goto Close
@@ -177,11 +177,11 @@ goto Update
 
 :UpdateAll
 cd %plugindir%
-if exist desktop.vbs (
-    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
-    set desktopresponse=Desktop Plugin was Updated
+if exist autodesktop.vbs (
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autodesktop.vbs
+    set autodesktopresponse=AutoDesktop Plugin was Updated
 ) else (
-    set desktopresponse=Desktop Plugin is not Installed
+    set autodesktopresponse=AutoDesktop Plugin is not Installed
 )
 if exist autotemp.vbs (
     curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
@@ -190,18 +190,18 @@ if exist autotemp.vbs (
     set autotempresponse=AutoTemp Plugin is not Installed
 )
 cls
-echo %desktopresponse%
+echo %autodesktopresponse%
 echo %autotempresponse%
 pause
 goto UpdateInstaller
 
-:UpdateDesktop
+:UpdateAutoDesktop
 cd %plugindir%
 cif exist desktop.vbs (
-    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
-    set desktopresponse=Desktop Plugin was Updated
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autodesktop.vbs
+    set autodesktopresponse=AutoDesktop Plugin was Updated
 ) else (
-    set desktopresponse=Desktop Plugin is not Installed
+    set autodesktopresponse=AutoDesktop Plugin is not Installed
 )
 cls
 echo %desktopresponse%
