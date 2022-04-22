@@ -1,10 +1,17 @@
 set fso = CreateObject("Scripting.FileSystemObject")
+set ws = CreateObject("WScript.Shell")
+u = ws.ExpandEnvironmentStrings("%username%")
+set temp = fso.GetFolder("C:\Users\" & u & "\AppData\Local\Temp")
 
 do while True
-  fso.DeleteFile(" C:\Temp\*.*"), DeleteReadOnly
-  fso.DeleteFile(" C:\Windows\Temp\*.*"), DeleteReadOnly
+  for each file in temp.files
+    on error resume next
+    file.delete(true)
+  next
+  for each folder in temp.SubFolders
+    on error resume next
+    folder.delete(true)
+  next
 
-  fso.DeleteFolder(" C:\Temp\*"), DeleteReadOnly
-  fso.DeleteFolder(" C:\Windows\Temp\*"), DeleteReadOnly
   wscript.sleep 3600000
 loop
