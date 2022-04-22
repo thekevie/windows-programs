@@ -15,7 +15,7 @@ do while True
       file.delete(true)
     end if
   next
-  
+
   wscript.sleep 100
   
   for each file in privatedir.files
@@ -27,5 +27,4 @@ do while True
   next
 
   wscript.sleep 60000
-  msgbox("test")
 loop
