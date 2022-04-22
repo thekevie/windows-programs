@@ -1,4 +1,4 @@
-# School Programs
+# Windows Programs
 Hello if you are reading this you probably go in my school. This program fixes some annoying stuff on the school computers.
 
 ## How To Install
