@@ -1,5 +1,5 @@
 @echo off
-title Version 2.1.2 - Source Code: github.com/thekevie/windows-programs
+title Version 2.1.3 - Source Code: github.com/thekevie/windows-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -31,7 +31,8 @@ if not %choices% == CONFIRM (
     echo You didnt type it in the right way 
     echo.
     goto Menu 
-    ) else (
+) else (
+    if exist "%userprofile%\documents\install.bat del /q desktop.vbs & echo already there & pause
     move "%directory%\install.bat" "%userprofile%\documents"
     cd %userprofile%\documents
     goto Exit
