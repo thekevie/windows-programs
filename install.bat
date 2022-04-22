@@ -1,5 +1,5 @@
 @echo off
-title Version 2.1.4 - Source Code: github.com/thekevie/windows-programs
+title Version 2.1.5 - Source Code: github.com/thekevie/windows-programs
 set dir=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -28,14 +28,13 @@ echo.
 set /p choices=Type CONFIRM exactly like that to continue: 
 if not %choices% == CONFIRM (
     cls 
-    echo You didnt type it in the right way 
+    echo You did not type CONFIRM it in that exact form
     echo.
     goto Menu 
 ) else (
     if exist "%userprofile%\documents\install.bat" del /q "%userprofile%\documents\install.bat"
     move "%directory%\install.bat" "%userprofile%\documents"
-    set dir=%userprofile%\documents
-    cd %dir%
+    cd %userprofile%\documents
     goto Exit
 )
 goto Menu
