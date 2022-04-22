@@ -1,5 +1,5 @@
 @echo off
-title Version 2.0.1 - Source Code: github.com/thekevie/school-programs
+title Version 2.0.2 - Source Code: github.com/thekevie/windows-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -53,8 +53,8 @@ goto Install
 
 :InstallAll
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
 cls
 echo Installed All Plugin
 pause
@@ -62,7 +62,7 @@ goto UpdateInstaller
 
 :InstallDesktop
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
 cls
 echo Installed Desktop Plugin
 pause
@@ -70,7 +70,7 @@ goto UpdateInstaller
 
 :InstallAutoTemp
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
 cls
 echo Installed AutoTemp Plugin
 pause
@@ -135,8 +135,8 @@ goto Update
 
 :UpdateAll
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
 cls
 echo Updated All Plugin
 pause
@@ -144,7 +144,7 @@ goto UpdateInstaller
 
 :UpdateDesktop
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/desktop.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
 cls
 echo Updated Desktop Plugin
 pause
@@ -152,7 +152,7 @@ goto UpdateInstaller
 
 :UpdateAutoTemp
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/autotemp.vbs
+curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
 cls
 echo Updated AutoTemp Plugin
 pause
@@ -180,7 +180,7 @@ goto Admin
 
 :UpdateInstaller
 cd %temp%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
+curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/install.bat
 cd %directory%
 copy /y "%temp%\install.bat" "install.bat"
 start install.bat
@@ -189,7 +189,7 @@ goto Exit
 
 :Close
 cd %directory%
-curl -OL https://raw.githubusercontent.com/thekevie/school-programs/main/install.bat
+curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/install.bat
 goto Exit
 
 :Exit
