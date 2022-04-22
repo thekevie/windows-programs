@@ -1,5 +1,5 @@
 @echo off
-title Version 2.0.4 - Source Code: github.com/thekevie/windows-programs
+title Version 2.0.5 - Source Code: github.com/thekevie/windows-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -138,15 +138,15 @@ goto Update
 cd %plugindir%
 if exist desktop.vbs (
     curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
-    set DesktopResponse = Desktop Plugin was Updated
+    set DesktopResponse = "Desktop Plugin was Updated"
     ) else (
-    set DesktopResponse = Desktop Plugin is not Installed
+    set DesktopResponse = "Desktop Plugin is not Installed"
 )
 if exist desktop.vbs (
     curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
-    set AutoTempResponse = AutoTemp Plugin was Updated
+    set AutoTempResponse = "AutoTemp Plugin was Updated"
     ) else (
-    set AutoTempResponse = AutoTemp Plugin is not Installed
+    set AutoTempResponse ="AutoTemp Plugin is not Installed"
 )
 cls
 echo %DesktopResponse%
