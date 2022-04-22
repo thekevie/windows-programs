@@ -1,18 +1,22 @@
 set fso = CreateObject("Scripting.FileSystemObject")
+set ws = CreateObject("WScript.Shell")
+
+publicpath = "C:\Users\Public\Desktop"
+privatepath = ws.SpecialFolders("Desktop")
 
 do while True
-  if fso.FileExists("%public%\desktop\Landguiden.url")
-    fso.DeleteFile("%public%\desktop\Landguiden.url")
+  if fso.FileExists(publicpath & "\Landguiden.url") then
+    fso.DeleteFile(publicpath & "\Landguiden.url")
   end if
-  if fso.FileExists("%public%\desktop\www.studi.se.url")
-    fso.DeleteFile("%public%\desktop\www.studi.se.url")
+  if fso.FileExists(publicpath & "\www.studi.se.url") then
+    fso.DeleteFile(publicpath & "\www.studi.se.url")
   end if
 
-  if fso.FileExists("%userprofile%\desktop\Landguiden.url")
-    fso.DeleteFile("%userprofile%\desktop\Landguiden.url")
+  if fso.FileExists(privatepath & "\Landguiden.url") then
+    fso.DeleteFile(privatepath & "\Landguiden.url")
   end if
-  if fso.FileExists("%userprofile%\desktop\www.studi.se.url")
-    fso.DeleteFile("%userprofile%\desktop\www.studi.se.url")
+  if fso.FileExists(privatepath & "\www.studi.se.url") then
+    fso.DeleteFile(privatepath & "\www.studi.se.url")
   end if
-  WScript.Sleep 30
+  WScript.Sleep 60
 loop
