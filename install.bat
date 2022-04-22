@@ -1,6 +1,6 @@
 @echo off
-title Version 2.1.3 - Source Code: github.com/thekevie/windows-programs
-set directory=%CD%
+title Version 2.1.4 - Source Code: github.com/thekevie/windows-programs
+set dir=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
 :Menu
@@ -32,9 +32,10 @@ if not %choices% == CONFIRM (
     echo.
     goto Menu 
 ) else (
-    if exist "%userprofile%\documents\install.bat del /q desktop.vbs & echo already there & pause
+    if exist "%userprofile%\documents\install.bat" del /q "%userprofile%\documents\install.bat"
     move "%directory%\install.bat" "%userprofile%\documents"
-    cd %userprofile%\documents
+    set dir=%userprofile%\documents
+    cd %dir%
     goto Exit
 )
 goto Menu
@@ -245,14 +246,14 @@ goto Admin
 :UpdateInstaller
 cd %temp%
 curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/install.bat
-cd %directory%
+cd %dir%
 copy /y "%temp%\install.bat" "install.bat"
 del /q /f %temp%\install.bat
 start install.bat
 goto Exit
 
 :Close
-cd %directory%
+cd %dir%
 curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/install.bat
 goto Exit
 
