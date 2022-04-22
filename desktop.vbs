@@ -5,18 +5,24 @@ publicpath = "C:\Users\Public\Desktop"
 privatepath = ws.SpecialFolders("Desktop")
 
 do while True
-  if fso.FileExists(publicpath & "\Landguiden.url") then
-    fso.DeleteFile(publicpath & "\Landguiden.url")
-  end if
-  if fso.FileExists(publicpath & "\www.studi.se.url") then
-    fso.DeleteFile(publicpath & "\www.studi.se.url")
-  end if
+  set publicdir = fso.GetFolder(publicpath)
+  set privatedir = fso.GetFolder(privatepath)
+  
+  for each file in publicdir.files
+    if file.name = "Landguiden.url" then 
+      file.delete(true)
+    elseif file.name = "www.studi.se.url" then 
+      file.delete(true)
+    end if
+  next
+  
+  for each file in privatedir.files
+    if file.name = "Landguiden.url" then 
+      file.delete(true)
+    elseif file.name = "www.studi.se.url" then 
+      file.delete(true)
+    end if
+  next
 
-  if fso.FileExists(privatepath & "\Landguiden.url") then
-    fso.DeleteFile(privatepath & "\Landguiden.url")
-  end if
-  if fso.FileExists(privatepath & "\www.studi.se.url") then
-    fso.DeleteFile(privatepath & "\www.studi.se.url")
-  end if
-  WScript.Sleep 60
+  wscript.sleep 60000
 loop
