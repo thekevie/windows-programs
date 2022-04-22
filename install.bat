@@ -1,5 +1,5 @@
 @echo off
-title Version 2.0.5 - Source Code: github.com/thekevie/windows-programs
+title Version 2.0.6 - Source Code: github.com/thekevie/windows-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -54,26 +54,47 @@ goto Install
 
 :InstallAll
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
-curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
+if exist desktop.vbs (
+    set desktopresponse=Desktop Plugin is already Installed
+) else ( 
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
+    set desktopresponse=Desktop Plugin was Installed
+)
+if exist autotemp.vbs (
+    set autotempresponse=AutoTemp Plugin is already Installed
+) else ( 
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
+    set autotempresponse=Desktop Plugin was Installed
+)
 cls
-echo Installed All Plugin
+echo %desktopresponse%
+echo %autotempresponse%
 pause
 goto UpdateInstaller
 
 :InstallDesktop
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
+if exist desktop.vbs (
+    set desktopresponse=Desktop Plugin is already Installed
+) else ( 
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
+    set desktopresponse=Desktop Plugin was Installed
+)
 cls
-echo Installed Desktop Plugin
+echo %desktopresponse%
 pause
 goto UpdateInstaller
 
 :InstallAutoTemp
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
+if exist autotemp.vbs (
+    set autotempresponse=AutoTemp Plugin is already Installed
+) else ( 
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
+    set autotempresponse=Desktop Plugin was Installed
+)
 cls
-echo Installed AutoTemp Plugin
+echo %autotempresponse%
 pause
 goto UpdateInstaller
 
@@ -95,26 +116,47 @@ goto Uninstall
 
 :UninstallAll
 cd %plugindir%
-del /q desktop.vbs
-del /q autotemp.vbs
+if exist desktop.vbs (
+    del /q desktop.vbs
+    set desktopresponse=Desktop Plugin was Uninstalled
+) else ( 
+    set desktopresponse=Desktop Plugin is not Installed
+)
+if exist autotemp.vbs (
+    del /q autotemp.vbs
+    set autotempresponse=AutoTemp Plugin was Uninstalled
+) else ( 
+    set autotempresponse=AutoTemp Plugin is not Installed
+)
 cls
-echo Uninstalled All Plugin
+echo %desktopresponse%
+echo %autotempresponse%
 pause
 goto UpdateInstaller
 
 :UninstallDesktop
 cd %plugindir%
-del /q desktop.vbs
+if exist desktop.vbs (
+    del /q desktop.vbs
+    set desktopresponse=Desktop Plugin was Uninstalled
+) else ( 
+    set desktopresponse=Desktop Plugin is not Installed
+)
 cls
-echo Uninstalled Desktop Plugin
+echo %desktopresponse%
 pause
 goto UpdateInstaller
 
 :UninstallAutoTemp
 cd %plugindir%
-del /q autotemp.vbs
+if exist autotemp.vbs (
+    del /q autotemp.vbs
+    set autotempresponse=AutoTemp Plugin was Uninstalled
+) else ( 
+    set autotempresponse=AutoTemp Plugin is not Installed
+)
 cls
-echo Uninstalled AutoTemp Plugin
+echo %autotempresponse%
 pause
 goto UpdateInstaller
 
@@ -138,35 +180,45 @@ goto Update
 cd %plugindir%
 if exist desktop.vbs (
     curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
-    set DesktopResponse = "Desktop Plugin was Updated"
-    ) else (
-    set DesktopResponse = "Desktop Plugin is not Installed"
+    set desktopresponse=Desktop Plugin was Updated
+) else (
+    set desktopresponse=Desktop Plugin is not Installed
 )
-if exist desktop.vbs (
+if exist autotemp.vbs (
     curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
-    set AutoTempResponse = "AutoTemp Plugin was Updated"
-    ) else (
-    set AutoTempResponse ="AutoTemp Plugin is not Installed"
+    set autotempresponse=AutoTemp Plugin was Updated
+) else (
+    set autotempresponse=AutoTemp Plugin is not Installed
 )
 cls
-echo %DesktopResponse%
-echo %AutoTempResponse%
+echo %desktopresponse%
+echo %autotempresponse%
 pause
 goto UpdateInstaller
 
 :UpdateDesktop
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
+cif exist desktop.vbs (
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
+    set desktopresponse=Desktop Plugin was Updated
+) else (
+    set desktopresponse=Desktop Plugin is not Installed
+)
 cls
-echo Updated Desktop Plugin
+echo %desktopresponse%
 pause
 goto UpdateInstaller
 
 :UpdateAutoTemp
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
+if exist autotemp.vbs (
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
+    set autotempresponse=AutoTemp Plugin was Updated
+) else (
+    set autotempresponse=AutoTemp Plugin is not Installed
+)
 cls
-echo Updated AutoTemp Plugin
+echo %autotempresponse%
 pause
 goto UpdateInstaller
 
