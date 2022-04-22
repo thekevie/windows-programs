@@ -1,5 +1,5 @@
 @echo off
-title Version 2.0.8 - Source Code: github.com/thekevie/windows-programs
+title Version 2.0.9 - Source Code: github.com/thekevie/windows-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -9,11 +9,11 @@ echo 2. Uninstall Plugins
 echo 3. Update Plugins
 echo 4. Done Installing
 set /p choices=Type the number: 
-if %choices% == ("1","install") goto Install
-if %choices% == ("2","uninstall" goto Uninstall
-if %choices% == ("3","update") goto Update
-if %choices% == ("4","done") cls & goto Done
-if %choices% == ("close", "exit") goto Exit
+if %choices% == 1 if %choices% == install goto Install
+if %choices% == 2 if %choices% == uninstall goto Uninstall
+if %choices% == 3 if %choices% == update goto Update
+if %choices% == 4 if %choices% == done cls & goto Done
+if %choices% == close if %choices% == exit goto Exit
 if %choices% == admin cls & goto Admin
 cls
 goto Menu
