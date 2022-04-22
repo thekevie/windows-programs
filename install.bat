@@ -1,5 +1,5 @@
 @echo off
-title Version 2.0.3 - Source Code: github.com/thekevie/windows-programs
+title Version 2.0.4 - Source Code: github.com/thekevie/windows-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -82,12 +82,12 @@ goto UpdateInstaller
 cls
 echo 1. Uninstall All Plugins
 echo 2. Uninstall Desktop Plugin
-echo 2. Uninstall AutoTemp Plugin
+echo 3. Uninstall AutoTemp Plugin
 echo 4. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto UninstallAll
 if %choices% == 2 goto UninstallDesktop
-if %choices% == 2 goto UninstallAutoTemp
+if %choices% == 3 goto UninstallAutoTemp
 if %choices% == 4 cls & goto Menu
 if %choices% == back cls & goto Menu
 if %choices% == ("close", "exit") goto Exit
@@ -136,10 +136,21 @@ goto Update
 
 :UpdateAll
 cd %plugindir%
-curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
-curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
+if exist desktop.vbs (
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/desktop.vbs
+    set DesktopResponse = Desktop Plugin was Updated
+    ) else (
+    set DesktopResponse = Desktop Plugin is not Installed
+)
+if exist desktop.vbs (
+    curl -OL https://raw.githubusercontent.com/thekevie/windows-programs/main/autotemp.vbs
+    set AutoTempResponse = AutoTemp Plugin was Updated
+    ) else (
+    set AutoTempResponse = AutoTemp Plugin is not Installed
+)
 cls
-echo Updated All Plugin
+echo %DesktopResponse%
+echo %AutoTempResponse%
 pause
 goto UpdateInstaller
 
