@@ -1,5 +1,5 @@
 @echo off
-title Version 2.1.5 - Source Code: github.com/thekevie/windows-programs
+title Version 2.1.6 - Source Code: github.com/thekevie/windows-programs
 set dir=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -33,7 +33,7 @@ if not %choices% == CONFIRM (
     goto Menu 
 ) else (
     if exist "%userprofile%\documents\install.bat" del /q "%userprofile%\documents\install.bat"
-    move "%directory%\install.bat" "%userprofile%\documents"
+    move "%dir%\install.bat" "%userprofile%\documents"
     cd %userprofile%\documents
     goto Exit
 )
