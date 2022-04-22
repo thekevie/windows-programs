@@ -1,5 +1,5 @@
 @echo off
-title Version 2.0.9 - Source Code: github.com/thekevie/windows-programs
+title Version 2.1.0 - Source Code: github.com/thekevie/windows-programs
 set directory=%CD%
 set plugindir=%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
@@ -8,12 +8,14 @@ echo 1. Install Plugins
 echo 2. Uninstall Plugins
 echo 3. Update Plugins
 echo 4. Done Installing
+echo 5. Close
 set /p choices=Type the number: 
-if %choices% == 1 if %choices% == install goto Install
-if %choices% == 2 if %choices% == uninstall goto Uninstall
-if %choices% == 3 if %choices% == update goto Update
-if %choices% == 4 if %choices% == done cls & goto Done
-if %choices% == close if %choices% == exit goto Exit
+if %choices% == 1 goto Install
+if %choices% == 2 goto Uninstall
+if %choices% == 3 goto Update
+if %choices% == 4 cls & goto Done
+if %choices% == 5 goto Close
+if %choices% == exit goto Close
 if %choices% == admin cls & goto Admin
 cls
 goto Menu
@@ -44,11 +46,11 @@ echo 2. Install Desktop Plugin
 echo 3. Install AutoTemp Plugin
 echo 4. Go Back
 set /p choices=Type the number: 
-if %choices% == ("1","all") goto InstallAll
-if %choices% == ("2","desktop") goto InstallDesktop
-if %choices% == ("3","autotemp") goto InstallAutoTemp
-if %choices% == ("4","back") cls & goto Menu
-if %choices% == ("close", "exit") goto Exit
+if %choices% == 1 goto InstallAll
+if %choices% == 2 goto InstallDesktop
+if %choices% == 3 goto InstallAutoTemp
+if %choices% == 4 cls & goto Menu
+if %choices% == exit goto Close
 goto Install
 
 :InstallAll
@@ -105,11 +107,11 @@ echo 2. Uninstall Desktop Plugin
 echo 3. Uninstall AutoTemp Plugin
 echo 4. Go Back
 set /p choices=Type the number: 
-if %choices% == ("1","all") goto UninstallAll
-if %choices% == ("2","desktop") goto UninstallDesktop
-if %choices% == ("3","autotemp") goto UninstallAutoTemp
-if %choices% == ("4","back") cls & goto Menu
-if %choices% == ("close", "exit") goto Exit
+if %choices% == 1 goto UninstallAll
+if %choices% == 2 goto UninstallDesktop
+if %choices% == 3 goto UninstallAutoTemp
+if %choices% == 4 cls & goto Menu
+if %choices% == exit goto Close
 goto Uninstall
 
 :UninstallAll
@@ -166,11 +168,11 @@ echo 2. Update Desktop Plugin
 echo 3. Update AutoTemp Plugin
 echo 4. Go Back
 set /p choices=Type the number: 
-if %choices% == ("1","all") goto UpdateAll
-if %choices% == ("2","desktop") goto UpdateDesktop
-if %choices% == ("3","autotemp") goto UpdateAutoTemp
-if %choices% == ("4","back") cls & goto Menu
-if %choices% == ("close", "exit") goto Exit
+if %choices% == 1 goto UpdateAll
+if %choices% == 2 goto UpdateDesktop
+if %choices% == 3 goto UpdateAutoTemp
+if %choices% == 4 cls & goto Menu
+if %choices% == exit goto Close
 goto Update
 
 :UpdateAll
@@ -227,7 +229,8 @@ echo 3. Go Back
 set /p choices=Type the number: 
 if %choices% == 1 goto UpdateInstaller
 if %choices% == 2 goto AdminPluginDir
-if %choices% == ("3","back") cls & goto Menu
+if %choices% == 3 cls & goto Menu
+if %choices% == exit goto Close
 cls
 goto admin
 
