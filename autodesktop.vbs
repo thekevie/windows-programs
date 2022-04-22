@@ -16,6 +16,8 @@ do while True
     end if
   next
   
+  wscript.sleep 100
+  
   for each file in privatedir.files
     if file.name = "Landguiden.url" then 
       file.delete(true)
@@ -24,5 +26,6 @@ do while True
     end if
   next
 
-  wscript.sleep 120000
+  wscript.sleep 60000
+  msgbox("test")
 loop
