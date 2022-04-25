@@ -13,5 +13,5 @@ do while True
     folder.delete(true)
   next
 
-  wscript.sleep 604800000
+  wscript.sleep 864000000
 loop
